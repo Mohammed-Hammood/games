@@ -1,0 +1,9 @@
+
+
+client/*
+./client
+backend/node_modules
+node_modules
+client/node_modules
+build
+backend/build

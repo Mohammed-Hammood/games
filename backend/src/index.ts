@@ -30,6 +30,12 @@ interface ParamsT {
     language?: string,
 }
 
+app.get("/", (req, reply) => {
+    return reply.send({
+        game: `https://${req.hostname}/api/games`,
+    })
+})
+
 app.get("/api/games", (req, reply) => {
     let games = gamesList;
     const { query, language, page: _p, limit: _l, order } = req.query as ParamsT
@@ -57,8 +63,8 @@ app.get("/api/games", (req, reply) => {
 
     games = games.sort((a, b) => order === 'id' ? a.id - b.id : b.id - a.id).filter((_, i) => i >= min && i < max);
 
-    const query_params = { limit, page, query, language, max, min,}
-    
+    const query_params = { limit, page, query, language, max, min, }
+
     reply.send({
         query_params,
         ok: true,

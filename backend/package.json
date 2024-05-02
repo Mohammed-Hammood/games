@@ -4,9 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node dist/index.js",
-    "build-tsc": "tsc -p tsconfig.json",
-    "build": "rimraf dist && tsc",
+    "start": "node dist/index.ts",
+    "build": "tsc -p tsconfig.json",
+    "build-rim": "rimraf dist && tsc",
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
     "ts.check": "tsc --project tsconfig.json",
     "add-build": "git add dist"

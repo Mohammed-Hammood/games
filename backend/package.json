@@ -5,7 +5,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "start": "node build/index.js",
+    "start": "node index.js",
     "build": "tsc -p tsconfig.json",
     "dev": "concurrently \"tsc -p tsconfig.json && \" \"node build/index.js \""
   },
@@ -18,5 +18,7 @@
   "devDependencies": {
     "@types/node": "^20.12.7",
     "typescript": "^5.4.5"
-  }
+  },
+  "include": ["*.tsx", "*.ts", "*.js"],
+  "exclude": ["node_modules/**"]
 }

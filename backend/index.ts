@@ -1,7 +1,7 @@
 import fastify from "fastify";
-import path from "node:path";
 import { gamesList } from "./data.js";
 import cors from "@fastify/cors";
+// import path from "node:path";
 // import static from "@fastify/static";
 
 const app = fastify({ logger: true });

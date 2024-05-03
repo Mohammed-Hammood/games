@@ -54,7 +54,7 @@ export async function GET(request: NextRequest) {
     games = games.map(item => {
         return {
             ...item,
-            image: origin + item.image,
+            cover: origin + item.cover,
             screenshots: item.screenshots.map(s => origin + s),
         }
     })

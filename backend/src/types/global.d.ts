@@ -1,6 +1,6 @@
-type PlatformT = "Google Stadia"| "Mac" | "Xbox One" | "PlayStation 5" | "Nintendo Switch" | "Xbox Series X|S" | "PC (Microsoft Windows)" | "PlayStation 4";
+type PlatformT ="all" | "Google Stadia"| "Mac" | "Xbox One" | "PlayStation 5" | "Nintendo Switch" | "Xbox Series X|S" | "PC (Microsoft Windows)" | "PlayStation 4";
 
-type PlayModeT = 	"single-player" | "multi-player";
+type PlayModeT = "all" | "single-player" | "multi-player";
 
 type GameT = {
     id:number;

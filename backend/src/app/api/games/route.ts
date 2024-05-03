@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { gamesList } from "./games";
 
-
 export async function GET(request: NextRequest) {
     const searchParams = new URL(request.url).searchParams;
     let limit: number = parseInt(searchParams.get("limit") || "10");
@@ -15,7 +14,7 @@ export async function GET(request: NextRequest) {
     let language = searchParams.get("language") || "all" as LanguageT;
     let voice_acting_language = searchParams.get("voice_acting_language") || "all" as LanguageT;
     let games = gamesList;
-    const language_options:LanguageT[] = ['all', 'english', 'russian'];
+    const language_options:LanguageT[] = ['all', 'english', 'russian', 'japanese'];
     const platform_options: PlatformT[] = ['all', 'Google Stadia', 'Mac', 'Nintendo Switch', 'PC (Microsoft Windows)', 'PlayStation 4', 'PlayStation 5', 'Xbox One', 'Xbox Series X|S',];
     const play_mode_options: PlayModeT[] = ['all', 'multi-player', 'single-player'];
 

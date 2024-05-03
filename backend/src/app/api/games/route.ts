@@ -10,9 +10,9 @@ export async function GET(request: NextRequest) {
     const order = searchParams.get("order") || "id";
     let language = searchParams.get("language") || "all";
     let games = gamesList;
-    const available_languages = ['all', 'english',  'russian'];
+    const available_languages = ['all', 'english', 'russian'];
 
-    if(!available_languages.includes(language)) language = available_languages[0];
+    if (!available_languages.includes(language)) language = available_languages[0];
     if (limit > 100 || limit < 0) limit = 10;
     if (page < 0) page = 1;
     const max = page * limit;
@@ -33,6 +33,16 @@ export async function GET(request: NextRequest) {
     const games_count = games.length;
 
     games = games.sort((a, b) => order === 'id' ? a.id - b.id : b.id - a.id).filter((_, i) => i >= min && i < max);
+
+    const endpoint = request.nextUrl.origin;
+
+    games = games.map(item => {
+        return {
+            ...item,
+            image: endpoint + item.image,
+            screenshots: item.screenshots.map(s => endpoint + s),
+        }
+    })
 
     return NextResponse.json({
         ok: true,

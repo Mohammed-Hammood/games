@@ -1,3 +1,6 @@
+type PlatformT = "Google Stadia"| "Mac" | "Xbox One" | "PlayStation 5" | "Nintendo Switch" | "Xbox Series X|S" | "PC (Microsoft Windows)" | "PlayStation 4";
+
+type PlayModeT = 	"single-player" | "multi-player";
 
 type GameT = {
     id:number;
@@ -5,7 +8,7 @@ type GameT = {
     title:string;
     description:string;
     initial_release: string;
-    platforms: string[];
+    platforms: PlatformT[];
     genres: string[];
     developers: string[];
     played_count: number;
@@ -13,15 +16,11 @@ type GameT = {
     playing_count:number;
     rating: number[];
     screenshots: string[];
-    offline_mode: {
-        mode: "single-player" | "multi-player";
-    };
-    online_mode: {
-        mode: "single-player" | "multi-player";
-    };
+    offline_mode: PlayModeT[];
+    online_mode: PlayModeT[];
     available_languages: string[];
     social_sites: {
-        title: string;
+        title: "Official website" | "Wikipedia" | "Youtube" | "X";
         url:string;
     }[]
 }

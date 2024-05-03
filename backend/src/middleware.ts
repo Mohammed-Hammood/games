@@ -8,8 +8,9 @@ export function middleware(request: NextRequest) {
        return NextResponse.redirect(new URL("/", request.url));
 
     }
+    return NextResponse.next()
 }
  
 export const config = {
-  matcher: '/((?!api|_next/static|_next/image|favicon.ico).*)',
+  matcher: '/((?!api|_next/static|_next/image|.next/images|images|favicon.svg).*)',
 }

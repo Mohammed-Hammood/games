@@ -1,6 +1,5 @@
 
-const baseURL =   `http://localhost:3001`
-// const baseURL =   `https://backend-api-games.vercel.app`;
+const baseURL = process.env.NODE_ENV === 'production' ? 'https://backend-api-games.vercel.app' :  `http://localhost:3001`;
 
 
 export const Endpoints = {

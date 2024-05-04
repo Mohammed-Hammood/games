@@ -1,0 +1,104 @@
+.wrapper {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    max-width: 375px;
+    z-index: 999;
+    margin: auto;
+    animation: OPEN_MODAL 0.5s ease-in  1;
+}
+
+.container {
+    position: relative;
+    width: 375px;
+    height: 100%;
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(50px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.close {
+    color: #FC440F;
+    font-size: 86px;
+    cursor: pointer;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    transition: .4s;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+}
+
+.formModal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inputModal {
+    width: 251px;
+    height: 55px;
+    background: var(--pink) 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 20px #08070880;
+    border: 2px solid var(--kettle-black);
+    border-radius: 30px;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    font: normal normal normal 25px/33px "Test Söhne";
+    
+    &::placeholder {
+        padding-left: 20px;
+        color: var(--kettle-black);
+        font-size: 25px;
+        opacity: 0.5;
+    }
+}
+
+.buttonModal {
+    cursor: pointer;
+    margin-top: 20px;
+    width: 169px;
+    height: 55px;
+    background: var(--caribbean-green) 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 20px #08070880;
+    border-radius: 30px;
+    font-size: 25px;
+    color: #FFF7FC;
+    border: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+@keyframes CLOSE_MODAL {
+    from {
+        opacity: 1;
+        backdrop-filter: blur(50px);
+    }
+    to {
+        opacity: 0;
+        backdrop-filter: blur(0);
+    }
+}
+
+.closing {
+    animation: CLOSE_MODAL 0.5s ease-in 1;
+}
+
+@keyframes OPEN_MODAL {
+    from {
+        opacity: 0;
+        backdrop-filter: blur(0);
+    }
+    to {
+        opacity: 1;
+        backdrop-filter: blur(50px);
+    }
+}

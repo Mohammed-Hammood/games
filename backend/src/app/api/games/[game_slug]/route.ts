@@ -10,15 +10,19 @@ type Props = {
 export async function GET(req: NextRequest, { params }: Props) {
     const game_slug = params.game_slug;
 
-    const game =game_slug ?  gamesList.find(item => game_slug == item.slug) : null;
+    const game_ = game_slug ?  gamesList.find(item => game_slug == item.slug) : null;
 
-    if (game) {
+    if (game_) {
         const origin = req.nextUrl.origin;
-        game.cover = origin + game.cover;
-        game.screenshots = game.screenshots.map(s => origin + s);
+        const game =  {
+            ...game_,
+            cover: origin + game_.cover,
+            screenshots: game_.screenshots.map(s => origin + s),
+        }
         return NextResponse.json({
             ok: true,
             game,
+            origin,
         })
     }
 

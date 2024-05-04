@@ -9,7 +9,7 @@ type GameT = {
     cover:string;
     title:string;
     description:string;
-    initial_release: string;
+    release_date: string;
     platforms: PlatformT[];
     genres: string[];
     developers: string[];
@@ -17,6 +17,8 @@ type GameT = {
     want_to_play_count: number;
     playing_count:number;
     rating: number[];
+    total_ratings:number;
+    rating_average:number;
     voice_acting: LanguageT[];
     screenshots: string[];
     offline_mode: PlayModeT[];

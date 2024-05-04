@@ -6,7 +6,7 @@ export async function GET(request: NextRequest) {
     let limit: number = parseInt(searchParams.get("limit") || "10");
     let page: number = parseInt(searchParams.get("page") || "1");
     const query = searchParams.get("query") || "";
-    const order = searchParams.get("order") || "id";
+    let order = searchParams.get("order") || "release_date";
     let platform = searchParams.get("platform") || "all" as PlatformT;
     let offline_play_mode = searchParams.get("offline_play_mode") || "all" as PlayModeT;
     let online_play_mode = searchParams.get("online_play_mode") || "all" as PlayModeT;
@@ -14,15 +14,17 @@ export async function GET(request: NextRequest) {
     let language = searchParams.get("language") || "all" as LanguageT;
     let voice_acting_language = searchParams.get("voice_acting_language") || "all" as LanguageT;
     let games = gamesList;
-    const language_options:LanguageT[] = ['all', 'english', 'russian', 'japanese'];
+    const language_options: LanguageT[] = ['all', 'english', 'russian', 'japanese'];
     const platform_options: PlatformT[] = ['all', 'Google Stadia', 'Mac', 'Nintendo Switch', 'PC (Microsoft Windows)', 'PlayStation 4', 'PlayStation 5', 'Xbox One', 'Xbox Series X|S', 'Linux'];
     const play_mode_options: PlayModeT[] = ['all', 'multi-player', 'single-player'];
+    const order_options = ['release_date', 'rating', '-rating', '-release_date'];
 
     if (!language_options.includes(language as LanguageT)) language = language_options[0];
     if (!language_options.includes(voice_acting_language as LanguageT)) language = language_options[0];
     if (!platform_options.includes(platform as PlatformT)) platform = platform_options[0];
     if (!play_mode_options.includes(offline_play_mode as PlayModeT)) offline_play_mode = play_mode_options[0];
     if (!play_mode_options.includes(online_play_mode as PlayModeT)) online_play_mode = play_mode_options[0];
+    if (!order_options.includes(order)) order = order_options[0];
 
     if (limit > 100 || limit < 0) limit = 10;
     if (page < 0) page = 1;
@@ -46,7 +48,14 @@ export async function GET(request: NextRequest) {
     )
     const games_count = games.length;
 
-    games = games.sort((a, b) => order === 'id' ? a.id - b.id : b.id - a.id).filter((_, i) => i >= min && i < max);
+    games = games.sort((a, b) => {
+        if (order === 'rating') return a.rating_average - b.rating_average
+        else if (order === '-rating') return b.rating_average - a.rating_average
+        else if (order === '-release_date') return new Date(b.release_date).getTime() - new Date(a.release_date).getTime()
+        else if (order === 'release_date') return new Date(a.release_date).getTime() - new Date(b.release_date).getTime()
+        return a.id - b.id
+    })
+        .filter((_, i) => i >= min && i < max);
 
     const origin = request.nextUrl.origin;
 
@@ -73,6 +82,7 @@ export async function GET(request: NextRequest) {
             language_options,
             platform_options,
             play_mode_options,
+            order_options,
             voice_acting_language_options: language_options,
         },
         games_count,

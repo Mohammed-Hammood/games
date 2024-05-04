@@ -24,11 +24,11 @@ export function middleware(req: NextRequest) {
 		'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
 	)
 
-	if (pathname !== "/" && !pathname.startsWith("/api/games")) {
+	// if (pathname !== "/" && !pathname.startsWith("/api/games")) {
 
-		return NextResponse.redirect(new URL("/", req.url));
+	// 	return NextResponse.redirect(new URL("/", req.url));
 
-	}
+	// }
 	return res
 }
 

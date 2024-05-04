@@ -20,6 +20,7 @@ type Props = {
     headers?: any;
     method?: MethodT;
     throwError?: boolean;
+    data?:any
 };
 
 export function useFetch(props: Props) {
@@ -61,7 +62,7 @@ export function useFetch(props: Props) {
                     throw new CustomError({ ...req, statusText: res.message, status: res.status })
                 }
             }
-            catch (err) {
+            catch (err: any) {
 
 
                 if (err && err.status === 404) {

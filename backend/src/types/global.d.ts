@@ -8,6 +8,7 @@ type GameT = {
     id:number;
     cover:string;
     title:string;
+    slug: string;
     description:string;
     release_date: string;
     platforms: PlatformT[];

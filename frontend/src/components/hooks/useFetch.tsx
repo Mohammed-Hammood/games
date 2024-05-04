@@ -4,7 +4,6 @@ import { CustomError } from 'utils';
 import { useNavigate } from 'react-router-dom';
 import type { UnknownAction } from 'redux';
 
-
 interface InitialRequest {
     method: MethodT;
     headers: Record<string, string>

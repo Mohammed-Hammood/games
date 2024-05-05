@@ -215,7 +215,7 @@ const games: GameT[] = [
 		want_to_play_count: 1230,
 		played_count: 2550,
 		playing_count: 303,
-		screenshots: ["/images/world-of-warcraft-screenshot-1.jpg", "/images/world-of-warcraft-screenshot-2.jpg", "/images/world-of-warcraft-screenshot-2.jpg", "/images/world-of-warcraft-screenshot-3.jpg", "/images/world-of-warcraft-screenshot-4.jpg", "/images/world-of-warcraft-screenshot-5.jpg", "/images/world-of-warcraft-screenshot-6.jpg"],
+		screenshots: ["/images/world-of-warcraft-screenshot-1.jpg", "/images/world-of-warcraft-screenshot-2.jpg", "/images/world-of-warcraft-screenshot-3.jpg", "/images/world-of-warcraft-screenshot-4.jpg", "/images/world-of-warcraft-screenshot-5.jpg", "/images/world-of-warcraft-screenshot-6.jpg"],
 		offline_mode: ["multi-player"],
 		online_mode: ["multi-player"],
 		available_languages: ["russian", "english"],

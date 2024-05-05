@@ -15,7 +15,7 @@ export async function GET(request: NextRequest) {
     let voice_acting_language = searchParams.get("voice_acting_language") || "all" as LanguageT;
     let games = gamesList;
     const language_options: LanguageT[] = ['all', 'english', 'russian', 'japanese'];
-    const platform_options: PlatformT[] = ['all', 'Google Stadia', 'Mac', 'Nintendo Switch', 'PC (Microsoft Windows)', 'PlayStation 4', 'PlayStation 5', 'Xbox One', 'Xbox Series X|S', 'Linux'];
+    const platform_options: PlatformT[] = ["all" , "Linux" , "Mac" , "Xbox One" , "Xbox Series X|S" , "Google Stadia" , "PC (Microsoft Windows)" , "Sega Mega Drive/Genesis" , "DOS" , "Mega-CD/Sega CD" , "Game Gear" , "Sega Saturn" , "GameCube" , "Gizmondo" , "PlayStation" , "PlayStation 2" , "PlayStation 3" , "PlayStation 4" , "PlayStation 5" , "PlayStation Portable" , "PlayStation Vita" , "Nintendo Switch" , "3DO Interactive Multiplayer" , "Microsoft Windows" , "iOS" , "Java Platform" , "Micro Edition" , "Android" , "Xbox 360" , "Xbox" , "Xbox One" , "Xbox Series X" , "Windows Phone" , "macOS" , "Zeebo" , "Stadia"]
     const play_mode_options: PlayModeT[] = ['all', 'multi-player', 'single-player'];
     const order_options = ['release_date', 'rating', '-rating', '-release_date'];
 

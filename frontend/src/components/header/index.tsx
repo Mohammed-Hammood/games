@@ -35,6 +35,7 @@ export function Header() {
                     <FaRobot title="Games" />
                 </Link>
                 <form onSubmit={submitHandler} className={styles.form}>
+                    <div></div>
                     <button type='button' className={styles.clearButton} onClick={clear}>
                         <MdClear />
                     </button>
@@ -49,9 +50,7 @@ export function Header() {
                         <FaMagnifyingGlass />
                     </button>
                 </form>
-
             </header>
-
         </>
     );
 }

@@ -63,6 +63,7 @@
 
 .subtitle {
     color: var(--black);
+    font-weight: 600;
 }
 
 .platforms, .genres, .total_ratings {
@@ -75,4 +76,8 @@
     span:not(:last-child)::after {
         content: ", "
     }
+}
+.initial_release {
+    display: flex;
+    gap:5px;
 }

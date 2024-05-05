@@ -21,6 +21,7 @@ export function Pagination() {
             pageCount={pageCount}
             activeClassName={cls.activePage}
             pageClassName={cls.page}
+            onPageActive={e => console.log(e.selected)}
             nextClassName={cls.page}
             disabledClassName={cls.disabledPage}
             previousClassName={cls.page}

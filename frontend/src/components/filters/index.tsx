@@ -12,11 +12,10 @@ export function GamesFilters() {
     const filtersChanged = JSON.stringify(filtersRef.current) !== JSON.stringify(filters);
 
     const dispatch = useAppDispatch();
+    
+    const url = games.length === 0 ? Endpoints.games(filters) : null;
 
-    const { setUrl } = useFetch({
-        reducer: setGames,
-        url: games.length === 0 ? Endpoints.games(filters) : null,
-    });
+    const { setUrl } = useFetch({ reducer: setGames, url });
 
     const setValue = (key: keyof typeof filters, value?: string | number): void => {
         if (value) {
@@ -75,7 +74,7 @@ export function GamesFilters() {
                     options={limitOptions}
                     onChange={s => setValue('limit', s?.value)}
                     defaultValue={limitOptions[0]}
-                    />
+                />
             </div>
             <div className={styles.section}>
                 <div className={styles.title}>Voice acting language</div>

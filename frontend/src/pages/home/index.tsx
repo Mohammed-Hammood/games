@@ -4,7 +4,7 @@ import cls from "./home.module.scss";
 
 
 function HomePage() {
-    const { games, loading, filters: { limit } } = useAppSelector(selectGames);
+    const { filters, loading, games } = useAppSelector(selectGames);
 
     return (
         <main className={cls.main}>
@@ -12,12 +12,13 @@ function HomePage() {
             <div className={cls.games_wrapper}>
                 <div className={cls.games_center_content}>
                     {loading
-                        ? <Loader type={'card'} cards_count={limit} />
+                        ? <Loader type={'card'} cards_count={filters.limit} />
 
                         : <>
-                            {games.map(game => <Card game={game} key={game.id} />)}
-                            
                             {<Pagination />}
+                            {games.map(game => <Card game={game} key={game.id} />)}
+                            {games.length >= 5 && <Pagination />}
+
                         </>
                     }
                 </div>

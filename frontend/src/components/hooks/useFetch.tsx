@@ -3,6 +3,7 @@ import { useAppDispatch } from 'store';
 import { CustomError } from 'utils';
 import { useNavigate } from 'react-router-dom';
 import type { UnknownAction } from 'redux';
+import { toast, Bounce } from 'react-toastify';
 
 interface InitialRequest {
     method: MethodT;
@@ -14,12 +15,9 @@ type Props = {
     reducer?: (data: any) => UnknownAction;
     setData?: (data: any) => void;
     url?: string | null;
-    showMessage?: boolean;
-    condition?: ((res: any) => boolean) | boolean;
     headers?: any;
     method?: MethodT;
-    throwError?: boolean;
-    data?:any
+    data?: any
 };
 
 export function useFetch(props: Props) {
@@ -27,6 +25,7 @@ export function useFetch(props: Props) {
     const [data, setData] = useState<any>(props.data);
     const [url, setUrl] = useState<string | null | undefined>(props.url);
     const [loading, setLoading] = useState<boolean>(false);
+    const [error, setError] = useState<null | string>(null);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
@@ -58,15 +57,25 @@ export function useFetch(props: Props) {
 
                 }
                 else {
-                    throw new CustomError({ ...req, statusText: res.message, status: res.status })
+                    throw new CustomError({ ...req, statusText: res.error, status: res.status })
                 }
             }
             catch (err: any) {
 
+                const text: string = err['message'] || err["statusText"] || err['error'] || "Semething went wrong";
 
-                if (err && err.status === 404) {
-                    navigate("/404");
-                }
+                toast.error(text, {
+                    position: "top-center",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    theme: "colored",
+                    transition: Bounce,
+                });
+
+                setError(text);
 
             } finally {
                 setLoading(false);
@@ -74,14 +83,17 @@ export function useFetch(props: Props) {
             }
         }
         if (url && !loading) {
+            setError(null);
             setLoading(true);
             sendRequest(url);
         }
-    }, [dispatch, url, loading, data, method, navigate, setUrl, setMethod, setLoading, props])
+    }, [dispatch, url, loading, data, method, navigate, setUrl, setMethod, setLoading, props, setError])
     return {
         loading,
         method,
         url,
+        error,
+        setError,
         setUrl,
         setData,
         setMethod,

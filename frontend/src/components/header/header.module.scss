@@ -12,6 +12,10 @@
     padding: .5rem;
     transition: all .5s linear;
     padding: 0 2rem;
+    gap:5px;
+    @media (max-width:800px) {
+        padding: 0 .5rem;
+    }
 
     &:hover {
         background: var(--teal) 0% 0% no-repeat padding-box;
@@ -37,7 +41,9 @@
     max-width: 50%;
     opacity: 0.8;
     transition: flex-grow .5s ease-in-out;
-
+    @media (max-width: 800px) {
+        max-width: 90%;
+    }
     &:focus,
     &:focus-within {
         opacity: 1;

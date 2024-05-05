@@ -1,15 +1,15 @@
 import { useParams } from 'react-router-dom';
 import styles from './game.module.scss';
 import { selectGames, useAppSelector } from 'store';
-import { format } from 'date-fns';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from 'swiper/modules';
 import { ImageMagnifier, Loader, useFetch } from 'components';
 import { useState } from 'react';
 import { FaExternalLinkAlt } from "react-icons/fa";
-import { FaWikipediaW } from "react-icons/fa";
+import { FaWikipediaW, FaTwitter } from "react-icons/fa";
 import { RiYoutubeLine } from "react-icons/ri";
-import { Endpoints } from 'utils';
+import { Endpoints, formated_date } from 'utils';
+
 
 function GamePage() {
     const { slug } = useParams();
@@ -17,36 +17,46 @@ function GamePage() {
     const [game, setGame] = useState<undefined | GameT>(games.find(item => slug && slug === item.slug));
     const [image, setImage] = useState<string | null>(null);
 
-    const { loading } = useFetch({
-        url: game ? null : Endpoints.game(slug),
-        setData: ({ game }: { game: GameT }) => setGame(game),
-    })
+    const url = !game && slug ? Endpoints.game(slug) : null;
+
+    const setData = ({ game }: { game: GameT }) => {
+        setGame(game);
+    }
+
+    const { loading, error } = useFetch({ url, setData });
 
     const icons = {
         "Official website": <FaExternalLinkAlt />,
         "Wikipedia": <FaWikipediaW />,
         "Youtube": <RiYoutubeLine />,
-        "X": <RiYoutubeLine />,
+        "X": <FaTwitter />,
     }
 
-    if (loading || !game) return (<div className={styles.loaderWrapper}>
-        <Loader size={80} />
-    </div>)
-
-    const initial_release = format(new Date(game.release_date).toString(), 'MMM dd, yyyy');
+    if (loading || !game) {
+        return (
+            <div className={styles.loaderWrapper}>
+                {loading ? <Loader size={80} /> : error}
+            </div>
+            )
+    }
 
     return (
         <main className={styles.main}>
             <ImageMagnifier image={image} setImage={setImage} />
             <div className={styles.game}>
-                <img className={styles.img} src={game.cover} alt="img" />
+                <img
+                    className={styles.img}
+                    src={game.cover}
+                    alt={game.title}
+                    onClick={() => setImage(game.cover ?? null)}
+                />
 
                 <div className={styles.title}>
                     {game.title}
                 </div>
                 <div className={styles.initial_release}>
                     <span className={styles.subtitle}>Initial release:</span>
-                    <span>{initial_release}</span>
+                    <span>{formated_date(game.release_date)}</span>
                 </div>
                 <div className={styles.description}>{game.description}</div>
                 <div className={styles.total_ratings}>
@@ -67,21 +77,33 @@ function GamePage() {
                     <div className={styles.subtitle}>Offline mode:</div>
                     {game.offline_mode.map(item => <span key={item}>{item}</span>)}
                 </div>
-                <div className={styles.social_sites}>
-                    <div className={styles.subtitle}>Social :</div>
-                    {game.offline_mode.map(item => <span key={item}>{item}</span>)}
+                <div className={styles.mode}>
+                    <div className={styles.subtitle}>Online mode :</div>
+                    {game.online_mode.map(item => <span key={item}>{item}</span>)}
                 </div>
 
                 <div className={styles.screenshots}>
                     <div className={styles.subtitle}>Screenshots: {game.screenshots.length}</div>
-                    <div className={styles.content}>
+                    <div className={styles.screenshots_content}>
 
                         <Swiper
                             className={styles.swiper}
-                            spaceBetween={50}
-                            slidesPerView={3}
                             pagination={true}
                             modules={[Pagination]}
+                            slidesPerView={3}
+                            breakpoints={{
+                                100: {
+                                    slidesPerView: 1,
+                                    width: 500,
+                                    spaceBetween: 2,
+                                },
+                                800: {
+                                    width: 800,
+                                    spaceBetween: 50,
+                                    slidesPerView: 3,
+                                }
+
+                            }}
                         >
                             {game.screenshots.map(url =>
                                 <SwiperSlide key={url}>

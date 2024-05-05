@@ -1,7 +1,6 @@
 export * from "./hooks";
 export * from "./footer";
 export * from "./header";
-export * from "./modal";
 export * from "./card";
 export * from "./loader";
 export * from "./filters";

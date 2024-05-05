@@ -1,12 +1,9 @@
 
 import { Link } from 'react-router-dom';
 import styles from './card.module.scss';
-import { AppRoutes } from "utils";
-import { format } from "date-fns";
+import { AppRoutes, formated_date } from "utils";
 
 export function Card({ game }: { game: GameT }) {
-
-    const initial_release = format(new Date(game.release_date).toString(), 'MMM dd, yyyy');
 
     const game_url = AppRoutes.game(game.slug);
 
@@ -21,7 +18,7 @@ export function Card({ game }: { game: GameT }) {
                 </div>
                 <div className={styles.initial_release}>
                     <span className={styles.subtitle}>Initial release:</span>
-                    <span>{initial_release}</span>
+                    <span>{formated_date(game.release_date)}</span>
                 </div>
 
                 <div className={styles.total_ratings}>

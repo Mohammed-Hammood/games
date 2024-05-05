@@ -1,15 +1,5 @@
-enum PlatformT {
-    all = "all",
-    Google_Stadia = "Google Stadia",
-    Linux = "Linux",
-    Mac = "Mac",
-    Xbox_One = "Xbox One",
-    PlayStation_5 = "PlayStation 5",
-    PlayStation_4 = "PlayStation 4",
-    Nintendo_Switch = "Nintendo Switch",
-    Xbox_Series = "Xbox Series X|S",
-    PC_Microsoft_Windows = "PC (Microsoft Windows)",
-}
+type PlatformT = "all" | "Linux" | "Mac" | "Xbox One" | "Xbox Series X|S" | "Google Stadia" | "PC (Microsoft Windows)" | "Sega Mega Drive/Genesis" | "DOS" | "Mega-CD/Sega CD" | "Game Gear" | "Sega Saturn" | "GameCube" | "Gizmondo" | "PlayStation" | "PlayStation 2" | "PlayStation 3" | "PlayStation 4" | "PlayStation 5" | "PlayStation Portable" | "PlayStation Vita" | "Nintendo Switch" | "3DO Interactive Multiplayer" | "Microsoft Windows" | "iOS" | "Java Platform" | "Micro Edition" | "Android" | "Xbox 360" | "Xbox" | "Xbox One" | "Xbox Series X" | "Windows Phone" | "macOS" | "Zeebo" | "Stadia";
+
 
 type UserT = {
     id: number;
@@ -58,7 +48,7 @@ type GamesFiltersT = {
 type GameT = {
     id: number;
     cover: string;
-    slug:string;
+    slug: string;
     title: string;
     description: string;
     release_date: string;
@@ -70,7 +60,7 @@ type GameT = {
     playing_count: number;
     rating: number[];
     total_ratings: number;
-    rating_average:number;
+    rating_average: number;
     voice_acting: LanguageT[];
     screenshots: string[];
     offline_mode: PlayModeT[];

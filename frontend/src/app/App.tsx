@@ -1,5 +1,6 @@
-import { Footer, Header } from "components";
 import Pages from "pages";
+import { Footer, Header } from "components";
+import { ToastContainer } from "react-toastify";
 
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
       <Header />
       <Pages />
       <Footer />
+      <ToastContainer />
     </>
   )
 }

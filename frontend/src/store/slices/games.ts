@@ -26,13 +26,16 @@ export const gamesSlice = createSlice({
         },
         resetGamesFilters(state) {
             state.filters = initialState.filters;
-            state.loading = true;
         },
         setGamesFilters(state, actions: PayloadAction<GamesFiltersT>) {
             state.filters = actions.payload;
+        },
+        resetGames(state){
             state.loading = true;
+            state.games = [];
+            state.games_count = 0;
         }
     }
 });
 
-export const { resetGamesFilters, setGames, setGamesFilters } = gamesSlice.actions;
+export const { resetGamesFilters, setGames, setGamesFilters, resetGames } = gamesSlice.actions;

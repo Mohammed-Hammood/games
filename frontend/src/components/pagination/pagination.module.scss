@@ -10,7 +10,7 @@
 .page,
 .activePage,
 .disabledPage {
-    background: var(--main-color-light);
+    background: var(--white);
     user-select: none;
     cursor: pointer;
     border-radius: 5px;
@@ -29,7 +29,7 @@
 
     &:hover,
     &.select {
-        background: var(--main-color-dark);
+        background: var(--main-color);
         color: var(--white);
         svg path {
             fill: var(--white);
@@ -43,7 +43,7 @@
 }
 
 .activePage {
-    background: var(--main-color-dark);
+    background: var(--main-color);
     color: var(--white);
 }
 

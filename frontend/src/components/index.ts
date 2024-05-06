@@ -6,3 +6,4 @@ export * from "./loader";
 export * from "./filters";
 export * from "./image-magnifier";
 export * from "./pagination";
+export * from "./services";

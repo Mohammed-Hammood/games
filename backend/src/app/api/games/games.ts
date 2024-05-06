@@ -6,7 +6,7 @@ const games: GameT[] = [
 		title: "Baldur's Gate 3",
 		cover: "/images/baldurs-gate-3.png",
 		description: "An ancient evil has returned to Baldur's Gate, intent on devouring it from the inside out. The fate of Faerun lies in your hands. Alone, you may resist. But together, you can overcome.",
-		rating: [1, 22, 111, 223, 330],
+		rating: [1, 2, 11, 20, 310],
 		rating_average: 0,
 		total_ratings: 0,
 		developers: ['larian studios'],
@@ -17,10 +17,16 @@ const games: GameT[] = [
 		played_count: 470,
 		playing_count: 139,
 		screenshots: ["/images/baldur-gate-3-screenshot-1.jpg", "/images/baldur-gate-3-screenshot-2.jpg", "/images/baldur-gate-3-screenshot-3.jpg", "/images/baldur-gate-3-screenshot-4.jpg", "/images/baldur-gate-3-screenshot-5.jpg", "/images/baldur-gate-3-screenshot-6.jpg"],
-		offline_mode: ["single-player"],
-		online_mode: ["single-player"],
-		available_languages: ["english", "russian"],
-		voice_acting: ['english', 'russian'],
+		offline: {
+			mode:["Single-player", "Multiplayer"],
+			max_players_count:4,
+		},
+		online: {
+			mode:["Single-player", "Multiplayer"],
+			max_players_count: 4,
+		},
+		available_languages: ["English", "Russian"],
+		voice_acting: ['English', 'Russian'],
 		social_sites: [
 			{
 				url: "https://en.wikipedia.org/wiki/Baldur%27s_Gate_III",
@@ -34,11 +40,11 @@ const games: GameT[] = [
 	},
 	{
 		id: 2,
-		slug: "persona-5-roya",
-		title: 'Persona 5 Roya',
+		slug: "persona-5-royal",
+		title: 'Persona 5 Royal',
 		cover: '/images/persona-5-royal-(2019).png',
 		description: "Persona 5 is a 2016 role-playing video game developed by P-Studio and published by Atlus. The game is the sixth installment in the Persona series, itself a part of the larger Megami Tensei franchise. It was released for PlayStation 3 and PlayStation 4 in Japan in September 2016 and worldwide in April 2017. It was published by Atlus in Japan and North America, and by Deep Silver in PAL territories. An enhanced version featuring new content, Persona 5 Royal, was released for PlayStation 4 in Japan in October 2019 and worldwide in March 2020. It was published by Atlus in Japan and worldwide by its parent company Sega. Persona 5 Royal was later released for Nintendo Switch, PlayStation 5, Windows, Xbox One, and Xbox Series X/S in October 2022.",
-		rating: [10, 2, 0, 10, 320],
+		rating: [1, 2, 0, 10, 320],
 		rating_average: 0,
 		total_ratings: 0,
 		developers: ["Atlus"],
@@ -49,10 +55,16 @@ const games: GameT[] = [
 		played_count: 455,
 		playing_count: 103,
 		screenshots: ["/images/persona-5-royal-(2019)-screenshot-1.jpg", "/images/persona-5-royal-(2019)-screenshot-2.jpg", "/images/persona-5-royal-(2019)-screenshot-3.jpg", "/images/persona-5-royal-(2019)-screenshot-4.jpg", "/images/persona-5-royal-(2019)-screenshot-5.jpg", "/images/persona-5-royal-(2019)-screenshot-6.jpg"],
-		offline_mode: ["single-player"],
-		online_mode: ["single-player"],
-		available_languages: ["english", "japanese"],
-		voice_acting: ['english', "japanese"],
+		offline: {
+			mode:["Single-player"],
+			max_players_count:1,
+		},
+		online: {
+			mode:["Single-player"],
+			max_players_count: 1,
+		},
+		available_languages: ["English", "Japanese"],
+		voice_acting: ['English', "Japanese"],
 		social_sites: [
 			{
 				title: "Official website",
@@ -73,7 +85,7 @@ const games: GameT[] = [
 		title: 'God of War Ragnarök',
 		cover: '/images/god-of-war-ragnarök.png',
 		description: "God of War: Ragnarök is the ninth installment in the God of War series and the sequel to 2018's God of War. Continuing with the Norse mythology theme, the game is set in ancient Norway and features series protagonists Kratos, the former Greek God of War, and his young son Atreus. The game kicked off the events of Ragnarök, where Kratos and Atreus must journey to each of the Nine Realms in search of answers as they prepare for the prophesied battle that will end the world.",
-		rating: [2, 0, 0, 2, 0, 3, 14, 32, 138, 200],
+		rating: [3, 14, 32, 138, 200],
 		rating_average: 0,
 		total_ratings: 0,
 		developers: ["SIE Santa Monica Studio"],
@@ -84,10 +96,16 @@ const games: GameT[] = [
 		played_count: 55,
 		playing_count: 123,
 		screenshots: ["/images/god-of-war-screenshot-1.webp", "/images/god-of-war-screenshot-2.jpg", "/images/god-of-war-screenshot-3.jpg", "/images/god-of-war-screenshot-4.jpg", "/images/god-of-war-screenshot-5.jpg", "/images/god-of-war-screenshot-6.jpg", "/images/god-of-war-screenshot-7.jpg", "/images/god-of-war-screenshot-8.jpg", "/images/god-of-war-screenshot-9.jpg"],
-		offline_mode: ["single-player"],
-		online_mode: ["single-player"],
-		available_languages: ["english",],
-		voice_acting: ['english',],
+		offline: {
+			mode:["Single-player"],
+			max_players_count:1,
+		},
+		online: {
+			mode:["Single-player"],
+			max_players_count: 1,
+		},
+		available_languages: ["English",],
+		voice_acting: ['English',],
 		social_sites: [
 			{
 				title: "Official website",
@@ -116,10 +134,16 @@ const games: GameT[] = [
 		played_count: 32,
 		playing_count: 1,
 		screenshots: ["/images/pathologic-screenshot-1.jpg", "/images/pathologic-screenshot-2.jpg", "/images/pathologic-screenshot-3.jpg", "/images/pathologic-screenshot-4.jpg", "/images/pathologic-screenshot-5.jpg", "/images/pathologic-screenshot-6.jpg"],
-		offline_mode: ["single-player"],
-		online_mode: ["single-player"],
-		available_languages: ["russian", "english"],
-		voice_acting: ['english', 'russian'],
+		offline: {
+			mode:["Single-player"],
+			max_players_count:1,
+		},
+		online: {
+			mode:["Single-player"],
+			max_players_count: 1,
+		},
+		available_languages: ["Russian", "English"],
+		voice_acting: ['English', 'Russian'],
 		social_sites: [
 			{
 				title: "Official website",
@@ -147,11 +171,17 @@ const games: GameT[] = [
 		want_to_play_count: 1,
 		played_count: 55,
 		playing_count: 1,
-		screenshots: ["/images/dawn-of-magic-screenshot-1.jpg", "/images/dawn-of-magic-screenshot-2.jpg", "/images/dawn-of-magic-screenshot-3.jpg","/images/dawn-of-magic-screenshot-4.jpg","/images/dawn-of-magic-screenshot-5.jpg"],
-		offline_mode: ["single-player", "multi-player"],
-		online_mode: ["single-player", "multi-player"],
-		available_languages: ["russian", "english"],
-		voice_acting: ['english', 'russian'],
+		screenshots: ["/images/dawn-of-magic-screenshot-1.jpg", "/images/dawn-of-magic-screenshot-2.jpg", "/images/dawn-of-magic-screenshot-3.jpg", "/images/dawn-of-magic-screenshot-4.jpg", "/images/dawn-of-magic-screenshot-5.jpg"],
+		offline: {
+			mode:["Single-player", "Multiplayer"],
+			max_players_count:4,
+		},
+		online: {
+			mode:["Single-player", "Multiplayer"],
+			max_players_count: 4,
+		},
+		available_languages: ["Russian", "English"],
+		voice_acting: ['English', 'Russian'],
 		social_sites: [
 			{
 				title: "Official website",
@@ -168,8 +198,8 @@ const games: GameT[] = [
 		slug: "war-thunder",
 		title: 'War Thunder',
 		cover: '/images/war-thunder.png',
-		description: "War Thunder is a free-to-play vehicular combat multiplayer video game developed and published by Gaijin Entertainment. Announced in 2011, it was first released in November 2012 as an open beta with a worldwide release in January 2013; it had its official release on December 21, 2016.",
-		rating: [0, 0, 2, 1, 0, 0, 4, 116, 228, 352],
+		description: "War Thunder is a free-to-play vehicular combat Multiplayer video game developed and published by Gaijin Entertainment. Announced in 2011, it was first released in November 2012 as an open beta with a worldwide release in January 2013; it had its official release on December 21, 2016.",
+		rating: [0, 4, 116, 228, 352],
 		rating_average: 0,
 		total_ratings: 0,
 		developers: ["Gaijin Entertainment"],
@@ -180,10 +210,16 @@ const games: GameT[] = [
 		played_count: 550,
 		playing_count: 103,
 		screenshots: ["/images/war-thunder-screenshot-1.jpg", "/images/war-thunder-screenshot-2.jpg", "/images/war-thunder-screenshot-3.jpg", "/images/war-thunder-screenshot-4.jpg", "/images/war-thunder-screenshot-5.jpg", "/images/war-thunder-screenshot-6.jpg", "/images/war-thunder-screenshot-7.jpg"],
-		offline_mode: ["single-player", "multi-player"],
-		online_mode: ["single-player", "multi-player"],
-		available_languages: ["russian", "english", "japanese"],
-		voice_acting: ['english', 'russian', "japanese"],
+		offline: {
+			mode:["Single-player", "Multiplayer"],
+			max_players_count:4,
+		},
+		online: {
+			mode:["Single-player", "Multiplayer"],
+			max_players_count: 4,
+		},
+		available_languages: ["Russian", "English", "Japanese"],
+		voice_acting: ['English', 'Russian', "Japanese"],
 		social_sites: [
 			{
 				title: "Official website",
@@ -204,22 +240,28 @@ const games: GameT[] = [
 		slug: "world-of-warcraft",
 		title: 'World of Warcraft',
 		cover: '/images/world-of-warcraft.png',
-		description: "World of Warcraft (WoW) is a massively multiplayer online role-playing game (MMORPG) released in 2004 by Blizzard Entertainment. Set in the Warcraft fantasy universe, World of Warcraft takes place within the world of Azeroth, approximately four years after the events of the previous game in the series, Warcraft III: The Frozen Throne. The game was announced in 2001, and was released for the 10th anniversary of the Warcraft franchise on November 23, 2004. Since launch, World of Warcraft has had nine major expansion packs: The Burning Crusade (2007), Wrath of the Lich King (2008), Cataclysm (2010), Mists of Pandaria (2012), Warlords of Draenor (2014), Legion (2016), Battle for Azeroth (2018), Shadowlands (2020), and Dragonflight (2022). Three further expansions, The War Within (planned for 2024), Midnight, and The Last Titan, were announced in 2023. ",
-		rating: [0, 0, 2, 1, 0, 10, 4, 16, 328, 652],
+		description: "World of Warcraft (WoW) is a massively Multiplayer online role-playing game (MMORPG) released in 2004 by Blizzard Entertainment. Set in the Warcraft fantasy universe, World of Warcraft takes place within the world of Azeroth, approximately four years after the events of the previous game in the series, Warcraft III: The Frozen Throne. The game was announced in 2001, and was released for the 10th anniversary of the Warcraft franchise on November 23, 2004. Since launch, World of Warcraft has had nine major expansion packs: The Burning Crusade (2007), Wrath of the Lich King (2008), Cataclysm (2010), Mists of Pandaria (2012), Warlords of Draenor (2014), Legion (2016), Battle for Azeroth (2018), Shadowlands (2020), and Dragonflight (2022). Three further expansions, The War Within (planned for 2024), Midnight, and The Last Titan, were announced in 2023. ",
+		rating: [10, 4, 16, 328, 652],
 		rating_average: 0,
 		total_ratings: 0,
 		developers: ["Blizzard Entertainment"],
 		platforms: ["PC (Microsoft Windows)", "Mac",],
-		genres: ["Massively multiplayer online role-playing"],
+		genres: ["Massively Multiplayer online role-playing"],
 		release_date: "23-Nov-2004",
 		want_to_play_count: 1230,
 		played_count: 2550,
 		playing_count: 303,
 		screenshots: ["/images/world-of-warcraft-screenshot-1.jpg", "/images/world-of-warcraft-screenshot-2.jpg", "/images/world-of-warcraft-screenshot-3.jpg", "/images/world-of-warcraft-screenshot-4.jpg", "/images/world-of-warcraft-screenshot-5.jpg", "/images/world-of-warcraft-screenshot-6.jpg"],
-		offline_mode: ["multi-player"],
-		online_mode: ["multi-player"],
-		available_languages: ["russian", "english"],
-		voice_acting: ['english', 'russian'],
+		offline: {
+			mode:["Multiplayer"],
+			max_players_count:5,
+		},
+		online: {
+			mode:["Multiplayer"],
+			max_players_count: 50,
+		},
+		available_languages: ["Russian", "English"],
+		voice_acting: ['English', 'Russian'],
 		social_sites: [
 			{
 				title: "Official website",
@@ -236,22 +278,24 @@ const games: GameT[] = [
 		slug: "skyforge",
 		title: 'skyforge',
 		cover: '/images/skyforge-cover.png',
-		description: "Skyforge is a free-to-play massively multiplayer online role-playing game developed by Allods Team in collaboration with Obsidian Entertainment, and published by My.com. Set on the planet Aelion, Skyforge fuses elements of Science fiction and fantasy in its visuals and storytelling, and sees players exploring the world as an immortal who must strive to become a god and defend the planet from alien invasion from other worlds. The project started development in 2010 and received an open release for Microsoft Windows in July 2015, with PlayStation 4 and Xbox One releases following in 2017. The latest major content update, 'Ignition', was released on all platforms in September 2019. A Nintendo Switch version was released in February 2021.",
-		rating: [0, 1, 2, 1, 1, 1, 4, 16, 228, 152],
+		description: "Skyforge is a free-to-play massively Multiplayer online role-playing game developed by Allods Team in collaboration with Obsidian Entertainment, and published by My.com. Set on the planet Aelion, Skyforge fuses elements of Science fiction and fantasy in its visuals and storytelling, and sees players exploring the world as an immortal who must strive to become a god and defend the planet from alien invasion from other worlds. The project started development in 2010 and received an open release for Microsoft Windows in July 2015, with PlayStation 4 and Xbox One releases following in 2017. The latest major content update, 'Ignition', was released on all platforms in September 2019. A Nintendo Switch version was released in February 2021.",
+		rating: [1, 4, 16, 228, 152],
 		rating_average: 0,
 		total_ratings: 0,
 		developers: ["Allods Team", "Obsidian Entertainment"],
 		platforms: ["PC (Microsoft Windows)", "Mac", "PlayStation 4", "Xbox One", "Nintendo Switch"],
-		genres: ["Massively multiplayer online role-playing"],
+		genres: ["Massively Multiplayer online role-playing"],
 		release_date: "16-Nov-2015",
 		want_to_play_count: 130,
 		played_count: 550,
 		playing_count: 33,
 		screenshots: ["/images/skyforge-screenshot-1.jpg", "/images/skyforge-screenshot-2.jpg", "/images/skyforge-screenshot-3.jpg"],
-		offline_mode: ["multi-player", "single-player"],
-		online_mode: ["multi-player"],
-		available_languages: ["russian", "english"],
-		voice_acting: ['english', 'russian'],
+		online: {
+			mode:["Multiplayer"],
+			max_players_count: 40,
+		},
+		available_languages: ["Russian", "English"],
+		voice_acting: ['English', 'Russian'],
 		social_sites: [
 			{
 				title: "Official website",
@@ -268,22 +312,28 @@ const games: GameT[] = [
 		slug: "world-of-tanks",
 		title: 'World of Tanks',
 		cover: '/images/world-of-tanks-cover.jpg',
-		description: "World of Tanks (WoT) is an armoured warfare-themed multiplayer online game developed by Wargaming, featuring 20th century (1910s–1970s) era combat vehicles. It is built upon a freemium business model where the game is free-to-play, but participants also have the option of paying a fee for use of 'premium' features. The focus is on player vs. player gameplay with each player controlling an armored vehicle, from the time of Pre-World War 2 to the Cold War-era.",
-		rating: [1, 0, 2, 1, 0, 0, 4, 26, 528, 352],
+		description: "World of Tanks (WoT) is an armoured warfare-themed Multiplayer online game developed by Wargaming, featuring 20th century (1910s–1970s) era combat vehicles. It is built upon a freemium business model where the game is free-to-play, but participants also have the option of paying a fee for use of 'premium' features. The focus is on player vs. player gameplay with each player controlling an armored vehicle, from the time of Pre-World War 2 to the Cold War-era.",
+		rating: [0, 4, 26, 528, 352],
 		rating_average: 0,
 		total_ratings: 0,
 		developers: ["Wargaming", "Day 1 Studios"],
 		platforms: ["PC (Microsoft Windows)", "Mac", "PlayStation 4", "Xbox One", "Nintendo Switch"],
-		genres: ["Vehicular combat", "massively multiplayer online"],
+		genres: ["Vehicular combat", "massively Multiplayer online"],
 		release_date: "12-Aug-2010",
 		want_to_play_count: 170,
 		played_count: 1550,
 		playing_count: 323,
 		screenshots: ["/images/war-of-tanks-screenshot-1.jpg", "/images/war-of-tanks-screenshot-2.jpg", "/images/war-of-tanks-screenshot-3.jpg", "/images/war-of-tanks-screenshot-4.jpg", "/images/war-of-tanks-screenshot-5.jpg", "/images/war-of-tanks-screenshot-6.jpg", "/images/war-of-tanks-screenshot-7.jpg", "/images/war-of-tanks-screenshot-8.jpg"],
-		offline_mode: ["multi-player", "single-player"],
-		online_mode: ["multi-player"],
-		available_languages: ["russian", "english", "japanese"],
-		voice_acting: ['english', 'russian', 'japanese'],
+		offline: {
+			mode:["Single-player", "Multiplayer"],
+			max_players_count:2,
+		},
+		online: {
+			mode:["Multiplayer"],
+			max_players_count: 3,
+		},
+		available_languages: ["Russian", "English", "Japanese"],
+		voice_acting: ['English', 'Russian', 'Japanese'],
 		social_sites: [
 			{
 				title: "Official website",
@@ -316,10 +366,16 @@ const games: GameT[] = [
 		played_count: 56,
 		playing_count: 1,
 		screenshots: ["/images/fifa-soccer-2004-screenshot-1.jpg", "/images/fifa-soccer-2004-screenshot-2.jpg", "/images/fifa-soccer-2004-screenshot-3.jpg", "/images/fifa-soccer-2004-screenshot-4.jpg", "/images/fifa-soccer-2004-screenshot-5.jpg",],
-		offline_mode: ["multi-player", "single-player"],
-		online_mode: ["multi-player", "single-player"],
-		available_languages: ["russian", "english", "japanese",],
-		voice_acting: ['english', 'russian', 'japanese'],
+		offline: {
+			mode:["Single-player", "Multiplayer"],
+			max_players_count:2,
+		},
+		online: {
+			mode:["Single-player", "Multiplayer"],
+			max_players_count: 2,
+		},
+		available_languages: ["Russian", "English", "Japanese",],
+		voice_acting: ['English', 'Russian', 'Japanese'],
 		social_sites: [
 			{
 				title: "Official website",
@@ -348,10 +404,16 @@ const games: GameT[] = [
 		played_count: 13,
 		playing_count: 1,
 		screenshots: ["/images/fifa-world-screenshot-1.jpg", "/images/fifa-world-screenshot-2.jpg", "/images/fifa-world-screenshot-3.jpg", "/images/fifa-world-screenshot-4.jpg", "/images/fifa-world-screenshot-5.jpg"],
-		offline_mode: ["multi-player", "single-player"],
-		online_mode: ["multi-player", "single-player"],
-		available_languages: ["russian", "english", "japanese",],
-		voice_acting: ['english', 'russian', 'japanese'],
+		offline: {
+			mode:["Single-player", "Multiplayer"],
+			max_players_count:2,
+		},
+		online: {
+			mode:["Single-player", "Multiplayer"],
+			max_players_count: 2,
+		},
+		available_languages: ["Russian", "English", "Japanese",],
+		voice_acting: ['English', 'Russian', 'Japanese'],
 		social_sites: [
 			{
 				title: "Official website",
@@ -380,10 +442,16 @@ const games: GameT[] = [
 		played_count: 13,
 		playing_count: 1,
 		screenshots: ["/images/fifa-world-screenshot-1.jpg", "/images/fifa-world-screenshot-2.jpg", "/images/fifa-world-screenshot-3.jpg", "/images/fifa-world-screenshot-4.jpg", "/images/fifa-world-screenshot-5.jpg"],
-		offline_mode: ["multi-player", "single-player"],
-		online_mode: ["multi-player", "single-player"],
-		available_languages: ["russian", "english", "japanese",],
-		voice_acting: ['english', 'russian', 'japanese'],
+		offline: {
+			mode:["Single-player", "Multiplayer"],
+			max_players_count:2,
+		},
+		online: {
+			mode:["Single-player", "Multiplayer"],
+			max_players_count: 2,
+		},
+		available_languages: ["Russian", "English", "Japanese",],
+		voice_acting: ['English', 'Russian', 'Japanese'],
 		social_sites: [
 			{
 				title: "Official website",
@@ -412,10 +480,16 @@ const games: GameT[] = [
 		played_count: 2918,
 		playing_count: 258,
 		screenshots: ["/images/the-witcher-3-wild-hunt-screenshot-1.jpg", "/images/the-witcher-3-wild-hunt-screenshot-2.jpg", "/images/the-witcher-3-wild-hunt-screenshot-3.jpg", "/images/the-witcher-3-wild-hunt-screenshot-4.jpg", "/images/the-witcher-3-wild-hunt-screenshot-5.jpg"],
-		offline_mode: ["single-player"],
-		online_mode: ["single-player"],
-		available_languages: ["russian", "english",],
-		voice_acting: ['english', 'russian',],
+		offline: {
+			mode:["Single-player"],
+			max_players_count:1,
+		},
+		online: {
+			mode:["Single-player"],
+			max_players_count: 1,
+		},
+		available_languages: ["Russian", "English",],
+		voice_acting: ['English', 'Russian',],
 		social_sites: [
 			{
 				title: "Official website",
@@ -452,10 +526,16 @@ const games: GameT[] = [
 		played_count: 1081,
 		playing_count: 181,
 		screenshots: ["/images/elden-ring-screenshot-1.jpg", "/images/elden-ring-screenshot-2.jpg", "/images/elden-ring-screenshot-3.jpg", "/images/elden-ring-screenshot-4.jpg", "/images/elden-ring-screenshot-5.jpg"],
-		offline_mode: ["single-player", "multi-player"],
-		online_mode: ["single-player", "multi-player"],
-		available_languages: ["russian", "english",],
-		voice_acting: ['english', 'russian',],
+		offline: {
+			mode:["Single-player", "Multiplayer"],
+			max_players_count:4,
+		},
+		online: {
+			mode:["Single-player", "Multiplayer"],
+			max_players_count: 4,
+		},
+		available_languages: ["Russian", "English",],
+		voice_acting: ['English', 'Russian',],
 		social_sites: [
 			{
 				title: "Official website",
@@ -492,10 +572,16 @@ const games: GameT[] = [
 		played_count: 441,
 		playing_count: 153,
 		screenshots: ["/images/the-legend-of-zelda-tears-of-the-kingdom-screenshot-1.jpg", "/images/the-legend-of-zelda-tears-of-the-kingdom-screenshot-2.jpg", "/images/the-legend-of-zelda-tears-of-the-kingdom-screenshot-3.webp", "/images/the-legend-of-zelda-tears-of-the-kingdom-screenshot-4.png", "/images/the-legend-of-zelda-tears-of-the-kingdom-screenshot-5.jpg"],
-		offline_mode: ["single-player"],
-		online_mode: ["single-player"],
-		available_languages: ["russian", "english",],
-		voice_acting: ['english', 'russian',],
+		offline: {
+			mode:["Single-player"],
+			max_players_count:1,
+		},
+		online: {
+			mode:["Single-player"],
+			max_players_count: 1,
+		},
+		available_languages: ["Russian", "English",],
+		voice_acting: ['English', 'Russian',],
 		social_sites: [
 			{
 				title: "Official website",
@@ -512,7 +598,7 @@ const games: GameT[] = [
 		title: 'Dark Souls II: Scholar of the First Sin',
 		slug: "dark-douls-II-scholar-of-the-first-sin",
 		cover: '/images/dark-douls-II-scholar-of-the-first-sin-cover.jpg',
-		description: `Dark Souls II is a 2014 action role-playing game developed by FromSoftware. The second installment of the Dark Souls series, it was released for Windows, PlayStation 3 and Xbox 360 by FromSoftware in Japan and Bandai Namco Games internationally. Taking place in the kingdom of Drangleic, the game features both player versus environment (PvE) and player versus player (PvP) gameplay. \nDark Souls II was released in March 2014 after some initial delays, with the Windows version being released the following month.\nDark Souls II was a critical and commercial success. A remastered version of the game, titled Dark Souls II: Scholar of the First Sin, was released for PlayStation 4, Xbox One, and Windows in April 2015. It contains the original game and its downloadable content with upgraded graphics, expanded online multiplayer capacity, and various other changes. A sequel, Dark Souls III, was released in 2016. `,
+		description: `Dark Souls II is a 2014 action role-playing game developed by FromSoftware. The second installment of the Dark Souls series, it was released for Windows, PlayStation 3 and Xbox 360 by FromSoftware in Japan and Bandai Namco Games internationally. Taking place in the kingdom of Drangleic, the game features both player versus environment (PvE) and player versus player (PvP) gameplay. \nDark Souls II was released in March 2014 after some initial delays, with the Windows version being released the following month.\nDark Souls II was a critical and commercial success. A remastered version of the game, titled Dark Souls II: Scholar of the First Sin, was released for PlayStation 4, Xbox One, and Windows in April 2015. It contains the original game and its downloadable content with upgraded graphics, expanded online Multiplayer capacity, and various other changes. A sequel, Dark Souls III, was released in 2016. `,
 		rating: [2, 1, 2, 120, 250],
 		rating_average: 0,
 		total_ratings: 0,
@@ -524,10 +610,16 @@ const games: GameT[] = [
 		playing_count: 23,
 		played_count: 319,
 		screenshots: ["/images/dark-douls-II-scholar-of-the-first-sin-screenshot-1.jpg", "/images/dark-douls-II-scholar-of-the-first-sin-screenshot-2.jpg", "/images/dark-douls-II-scholar-of-the-first-sin-screenshot-3.jpg", "/images/dark-douls-II-scholar-of-the-first-sin-screenshot-4.jpg", "/images/dark-douls-II-scholar-of-the-first-sin-screenshot-5.jpg"],
-		offline_mode: ["single-player", "multi-player"],
-		online_mode: ["single-player", "multi-player"],
-		available_languages: ["russian", "english",],
-		voice_acting: ['english', 'russian',],
+		offline: {
+			mode:["Single-player", "Multiplayer"],
+			max_players_count:6,
+		},
+		online: {
+			mode:["Single-player", "Multiplayer"],
+			max_players_count: 6,
+		},
+		available_languages: ["Russian", "English",],
+		voice_acting: ['English', 'Russian',],
 		social_sites: [
 			{
 				title: "Official website",
@@ -544,7 +636,7 @@ const games: GameT[] = [
 		title: 'Gears of War 2',
 		slug: "gears-of-war-2",
 		cover: '/images/gears-of-war-2-cover.jpg',
-		description: `Gears of War 2 is a third-person shooter video game developed by Epic Games and published by Microsoft Game Studios for the Xbox 360. It is the second installment of the Gears of War series, with lead design by Cliff Bleszinski. The game was released in North America, Europe and Australia on November 7, 2008, and was released in Japan on July 30, 2009. The game expands technically on the previous game by using a modified Unreal Engine 3. The development team brought in comic book writer Joshua Ortega to help write the plot for the game.\nIn Gears of War 2, the COG continues its fight against the Locust, who are attempting to sink all of the cities on the planet Sera. Sergeant Marcus Fenix leads Delta Squad into the depths of the planet to try to stop the Locust during the assault upon Locust territory. The player controls Fenix in the main mission campaign, with the ability to play cooperatively with a second player controlling Fenix's best friend and fellow Squad member Dominic "Dom" Santiago. The game includes several existing and new multiplayer modes including five-on-five battles between human and Locust forces, and a "Horde" mode that challenges up to five players against waves of Locust forces with ever-increasing strength. New weapons and gameplay mechanics such as "chainsaw duels" and the ability to use downed foes as "meatshields" were added to the game.`,
+		description: `Gears of War 2 is a third-person shooter video game developed by Epic Games and published by Microsoft Game Studios for the Xbox 360. It is the second installment of the Gears of War series, with lead design by Cliff Bleszinski. The game was released in North America, Europe and Australia on November 7, 2008, and was released in Japan on July 30, 2009. The game expands technically on the previous game by using a modified Unreal Engine 3. The development team brought in comic book writer Joshua Ortega to help write the plot for the game.\nIn Gears of War 2, the COG continues its fight against the Locust, who are attempting to sink all of the cities on the planet Sera. Sergeant Marcus Fenix leads Delta Squad into the depths of the planet to try to stop the Locust during the assault upon Locust territory. The player controls Fenix in the main mission campaign, with the ability to play cooperatively with a second player controlling Fenix's best friend and fellow Squad member Dominic "Dom" Santiago. The game includes several existing and new Multiplayer modes including five-on-five battles between human and Locust forces, and a "Horde" mode that challenges up to five players against waves of Locust forces with ever-increasing strength. New weapons and gameplay mechanics such as "chainsaw duels" and the ability to use downed foes as "meatshields" were added to the game.`,
 		rating: [1, 1, 20, 120, 150],
 		rating_average: 0,
 		total_ratings: 0,
@@ -556,10 +648,16 @@ const games: GameT[] = [
 		playing_count: 2,
 		played_count: 316,
 		screenshots: ["/images/gears-of-war-2-screenshot-1.jpg", "/images/gears-of-war-2-screenshot-2.jpg", "/images/gears-of-war-2-screenshot-3.jpg", "/images/gears-of-war-2-screenshot-4.jpg", "/images/gears-of-war-2-screenshot-5.jpg"],
-		offline_mode: ["single-player", "multi-player"],
-		online_mode: ["single-player", "multi-player"],
-		available_languages: ["russian", "english",],
-		voice_acting: ['english', 'russian',],
+		offline: {
+			mode:["Single-player", "Multiplayer"],
+			max_players_count:2,
+		},
+		online: {
+			mode:["Single-player", "Multiplayer"],
+			max_players_count: 10,
+		},
+		available_languages: ["Russian", "English",],
+		voice_acting: ['English', 'Russian',],
 		social_sites: [
 			{
 				title: "Official website",
@@ -588,10 +686,16 @@ const games: GameT[] = [
 		played_count: 755,
 		playing_count: 47,
 		screenshots: ["/images/chrono-trigger-screenshot-1.jpg", "/images/chrono-trigger-screenshot-2.jpg", "/images/chrono-trigger-screenshot-3.jpg", "/images/chrono-trigger-screenshot-4.jpg", "/images/chrono-trigger-screenshot-5.jpg"],
-		offline_mode: ["single-player", "multi-player"],
-		online_mode: ["single-player", "multi-player"],
-		available_languages: ["russian", "english", "japanese"],
-		voice_acting: ['english', 'russian', "japanese"],
+		offline: {
+			mode:["Single-player", "Multiplayer"],
+			max_players_count:3,
+		},
+		online: {
+			mode:["Single-player", "Multiplayer"],
+			max_players_count: 3,
+		},
+		available_languages: ["Russian", "English", "Japanese"],
+		voice_acting: ['English', 'Russian', "Japanese"],
 		social_sites: [
 			{
 				title: "Official website",
@@ -620,10 +724,16 @@ const games: GameT[] = [
 		played_count: 154,
 		playing_count: 64,
 		screenshots: ["/images/super-mario-bros-wonder-screenshot-1.jpg", "/images/super-mario-bros-wonder-screenshot-2.jpg", "/images/super-mario-bros-wonder-screenshot-3.jpg", "/images/super-mario-bros-wonder-screenshot-4.jpg", "/images/super-mario-bros-wonder-screenshot-5.jpg"],
-		offline_mode: ["single-player", "multi-player"],
-		online_mode: ["single-player", "multi-player"],
-		available_languages: ["russian", "english",],
-		voice_acting: ['english', 'russian',],
+		offline: {
+			mode:["Single-player", "Multiplayer"],
+			max_players_count:4,
+		},
+		online: {
+			mode:["Single-player", "Multiplayer"],
+			max_players_count: 10,
+		},
+		available_languages: ["Russian", "English",],
+		voice_acting: ['English', 'Russian',],
 		social_sites: [
 			{
 				title: "Official website",
@@ -652,10 +762,12 @@ const games: GameT[] = [
 		played_count: 441,
 		playing_count: 153,
 		screenshots: ["/images/sunflower-land-cover.jpg-screenshot-1.jpg", "/images/sunflower-land-cover.jpg-screenshot-2.jpg", "/images/sunflower-land-cover.jpg-screenshot-3.jpg", "/images/sunflower-land-cover.jpg-screenshot-4.jpg", "/images/sunflower-land-cover.jpg-screenshot-5.jpg"],
-		offline_mode: ["single-player"],
-		online_mode: ["single-player"],
-		available_languages: ["russian", "english",],
-		voice_acting: ['english', 'russian',],
+		online: {
+			mode:["Single-player"],
+			max_players_count: 1,
+		},
+		available_languages: ["Russian", "English",],
+		voice_acting: ['English', 'Russian',],
 		social_sites: [
 			{
 				title: "X",
@@ -673,18 +785,22 @@ const games: GameT[] = [
 	}
 ]
 
-const duplicate = Array.from({ length: games.length * 1 }, (_, i) => {
-	return {
-		...games[i] || games[i - games.length],
-		id: i + 1,
+
+const getRatingAverage = (rating: number[], total_rating: number):number => {
+	let sum = 0;
+	for (let i = 0; i < rating.length; i++) {
+		sum += rating[i] * (i + 1);
 	}
-})
-export const gamesList = duplicate.map(item => {
+	sum /= total_rating;
+	return parseFloat(sum.toFixed(1))
+}
+
+export const gamesList = games.map(item => {
 	const total_ratings = item.rating.reduce((prev, current) => prev + current, 0);
 
 	return {
 		...item,
-		rating_average: total_ratings / item.rating.length,
+		rating_average: getRatingAverage(item.rating, total_ratings),
 		total_ratings,
 	}
 

@@ -17,15 +17,30 @@ export function Header() {
     const submitHandler = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        if (query.trim().length > 0 && query !== filters.query) {
-            dispatch(setGamesFilters({ ...filters, query: query.trim() }));
+        const q = query.trim();
+
+        if (q.length > 0 && query !== filters.query) {
+
+            dispatch(setGamesFilters({
+                ...filters,
+                query: q,
+                page: 1
+            }));
+
             navigate("/");
         }
     }
     const clear = () => {
+        
         setQuery("");
+        
         if (filters.query.length > 0) {
-            dispatch(setGamesFilters({ ...filters, query: ""}));
+            
+            dispatch(setGamesFilters({
+                ...filters,
+                query: "",
+                page: 1
+            }));
         }
     }
     return (

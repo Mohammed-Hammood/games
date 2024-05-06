@@ -26,15 +26,12 @@ svg {
 }
 
 
-body,
-html {
-    min-height: 100vmin;
-    width: 100%;
-}
-
 #root {
     width: 100%;
     height: max-content;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 body {

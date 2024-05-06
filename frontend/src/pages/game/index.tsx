@@ -1,29 +1,18 @@
-import { useParams } from 'react-router-dom';
 import styles from './game.module.scss';
-import { selectGames, useAppSelector } from 'store';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from 'swiper/modules';
-import { ImageMagnifier, Loader, useFetch } from 'components';
+import { ImageMagnifier, Loader, GameAPIService } from 'components';
 import { useState } from 'react';
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { FaWikipediaW, FaTwitter } from "react-icons/fa";
 import { RiYoutubeLine } from "react-icons/ri";
-import { Endpoints, formated_date } from 'utils';
+import { formated_date } from 'utils';
+import { FaStar } from 'react-icons/fa6';
 
 
 function GamePage() {
-    const { slug } = useParams();
-    const { games } = useAppSelector(selectGames);
-    const [game, setGame] = useState<undefined | GameT>(games.find(item => slug && slug === item.slug));
+    const { error, loading, game } = GameAPIService();
     const [image, setImage] = useState<string | null>(null);
-
-    const url = !game && slug ? Endpoints.game(slug) : null;
-
-    const setData = ({ game }: { game: GameT }) => {
-        setGame(game);
-    }
-
-    const { loading, error } = useFetch({ url, setData });
 
     const icons = {
         "Official website": <FaExternalLinkAlt />,
@@ -35,15 +24,24 @@ function GamePage() {
     if (loading || !game) {
         return (
             <div className={styles.loaderWrapper}>
-                {loading ? <Loader size={80} /> : error}
+                {loading ?
+                    <Loader size={80} /> :
+                    <h2>{error?.text}</h2>
+                }
             </div>
-            )
+        )
     }
-
+    const getMode = ({ mode, max_players_count }: { mode: PlayModeT[], max_players_count: number }) => {
+        return mode.map(item => <span key={item}>
+            {item} {item === 'Multiplayer' ? `(${max_players_count})` : null}
+        </span>)
+    }
     return (
         <main className={styles.main}>
             <ImageMagnifier image={image} setImage={setImage} />
             <div className={styles.game}>
+                <div className={styles.imageWrapper} style={{ backgroundImage: `url(${game.cover})` }}>
+                </div>
                 <img
                     className={styles.img}
                     src={game.cover}
@@ -60,6 +58,13 @@ function GamePage() {
                 </div>
                 <div className={styles.description}>{game.description}</div>
                 <div className={styles.total_ratings}>
+                    <div className={styles.subtitle}>Rating:</div>
+                    <div className={styles.center_content}>
+                        {game.rating_average}
+                        <FaStar color='gold' />
+                    </div>
+                </div>
+                <div className={styles.total_ratings}>
                     <div className={styles.subtitle}>Total ratings:</div>
                     <div>{game.total_ratings}</div>
                 </div>
@@ -73,15 +78,18 @@ function GamePage() {
                     <div className={styles.subtitle}>Genres:</div>
                     {game.genres.map(item => <span key={item}>{item}</span>)}
                 </div>
-                <div className={styles.mode}>
-                    <div className={styles.subtitle}>Offline mode:</div>
-                    {game.offline_mode.map(item => <span key={item}>{item}</span>)}
-                </div>
-                <div className={styles.mode}>
-                    <div className={styles.subtitle}>Online mode :</div>
-                    {game.online_mode.map(item => <span key={item}>{item}</span>)}
-                </div>
-
+                {game.offline && (
+                    <div className={styles.mode}>
+                        <div className={styles.subtitle}>Offline mode:</div>
+                        {getMode(game.offline)}
+                    </div>
+                )}
+                {game.online && (
+                    <div className={styles.mode}>
+                        <div className={styles.subtitle}>Online mode :</div>
+                        {getMode(game.online)}
+                    </div>
+                )}
                 <div className={styles.screenshots}>
                     <div className={styles.subtitle}>Screenshots: {game.screenshots.length}</div>
                     <div className={styles.screenshots_content}>

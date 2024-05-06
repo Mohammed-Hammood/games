@@ -6,6 +6,7 @@ const store = configureStore({
     reducer: {
         [gamesSlice.name]: gamesSlice.reducer,
     },
+    devTools: process.env.NODE_ENV !== 'production',
 });
 
 

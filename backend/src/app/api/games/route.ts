@@ -7,16 +7,17 @@ export async function GET(request: NextRequest) {
     let page: number = parseInt(searchParams.get("page") || "1");
     const query = searchParams.get("query") || "";
     let order = searchParams.get("order") || "release_date";
-    let platform = searchParams.get("platform") || "all" as PlatformT;
-    let offline_play_mode = searchParams.get("offline_play_mode") || "all" as PlayModeT;
-    let online_play_mode = searchParams.get("online_play_mode") || "all" as PlayModeT;
+    let platform = searchParams.get("platform") || "All" as PlatformT;
+    let online_play_mode = searchParams.get("online_play_mode") || "All" as PlayModeT;
+    let offline_play_mode = searchParams.get("offline_play_mode") || "All" as PlayModeT;
 
-    let language = searchParams.get("language") || "all" as LanguageT;
-    let voice_acting_language = searchParams.get("voice_acting_language") || "all" as LanguageT;
+    let language = searchParams.get("language") || "All" as LanguageT;
+    let voice_acting_language = searchParams.get("voice_acting_language") || "All" as LanguageT;
     let games = gamesList;
-    const language_options: LanguageT[] = ['all', 'english', 'russian', 'japanese'];
-    const platform_options: PlatformT[] = ["all" , "Linux" , "Mac" , "Xbox One" , "Xbox Series X|S" , "Google Stadia" , "PC (Microsoft Windows)" , "Sega Mega Drive/Genesis" , "DOS" , "Mega-CD/Sega CD" , "Game Gear" , "Sega Saturn" , "GameCube" , "Gizmondo" , "PlayStation" , "PlayStation 2" , "PlayStation 3" , "PlayStation 4" , "PlayStation 5" , "PlayStation Portable" , "PlayStation Vita" , "Nintendo Switch" , "3DO Interactive Multiplayer" , "Microsoft Windows" , "iOS" , "Java Platform" , "Micro Edition" , "Android" , "Xbox 360" , "Xbox" , "Xbox One" , "Xbox Series X" , "Windows Phone" , "macOS" , "Zeebo" , "Stadia"]
-    const play_mode_options: PlayModeT[] = ['all', 'multi-player', 'single-player'];
+
+    const language_options: LanguageT[] = ['All', 'English', 'Russian', 'Japanese'];
+    const platform_options: PlatformT[] = ["All", "Linux", "Mac", "Xbox One", "Xbox Series X|S", "Google Stadia", "PC (Microsoft Windows)", "Sega Mega Drive/Genesis", "DOS", "Mega-CD/Sega CD", "Game Gear", "Sega Saturn", "GameCube", "Gizmondo", "PlayStation", "PlayStation 2", "PlayStation 3", "PlayStation 4", "PlayStation 5", "PlayStation Portable", "PlayStation Vita", "Nintendo Switch", "3DO Interactive Multiplayer", "Microsoft Windows", "iOS", "Java Platform", "Micro Edition", "Android", "Xbox 360", "Xbox", "Xbox One", "Xbox Series X", "Windows Phone", "macOS", "Zeebo", "Stadia"]
+    const play_mode_options: PlayModeT[] = ['All', 'Multiplayer', 'Single-player'];
     const order_options = ['release_date', 'rating', '-rating', '-release_date'];
 
     if (!language_options.includes(language as LanguageT)) language = language_options[0];
@@ -40,11 +41,11 @@ export async function GET(request: NextRequest) {
     }
 
     games = games.filter(item =>
-        (language === 'all' || item.available_languages.includes(language as LanguageT)) &&
-        (offline_play_mode === 'all' || item.offline_mode.includes(offline_play_mode as PlayModeT)) &&
-        (online_play_mode === 'all' || item.online_mode.includes(online_play_mode as PlayModeT)) &&
-        (voice_acting_language === 'all' || item.voice_acting.includes(voice_acting_language as LanguageT)) &&
-        (platform === 'all' || item.platforms.includes(platform as PlatformT))
+        (language === 'All' || item.available_languages.includes(language as LanguageT)) &&
+        (online_play_mode === 'All' || item.online?.mode.includes(online_play_mode as PlayModeT)) &&
+        (offline_play_mode === 'All' || item.offline?.mode.includes(offline_play_mode as PlayModeT)) &&
+        (voice_acting_language === 'All' || item.voice_acting.includes(voice_acting_language as LanguageT)) &&
+        (platform === 'All' || item.platforms.includes(platform as PlatformT))
     )
     const games_count = games.length;
 
@@ -81,8 +82,8 @@ export async function GET(request: NextRequest) {
             online_play_mode,
             language_options,
             platform_options,
-            play_mode_options,
             order_options,
+            play_mode_options,
             voice_acting_language_options: language_options,
         },
         games_count,

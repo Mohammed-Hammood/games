@@ -25,7 +25,7 @@ export function useFetch(props: Props) {
     const [data, setData] = useState<any>(props.data);
     const [url, setUrl] = useState<string | null | undefined>(props.url);
     const [loading, setLoading] = useState<boolean>(false);
-    const [error, setError] = useState<null | string>(null);
+    const [error, setError] = useState<null | { status: number, text: string }>(null);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
@@ -44,10 +44,12 @@ export function useFetch(props: Props) {
         const sendRequest = async (url: string): Promise<void> => {
             try {
                 const req = await fetch(url, options);
-                if (req.status !== 200) {
+                
+                if (!req.ok) {
                     throw new CustomError(req);
                 }
                 const res = await req.json();
+                
                 if (res && res.ok) {
                     const { reducer, setData } = props;
 
@@ -57,7 +59,11 @@ export function useFetch(props: Props) {
 
                 }
                 else {
-                    throw new CustomError({ ...req, statusText: res.error, status: res.status })
+                    throw new CustomError({
+                        ...req,
+                        statusText: res.error,
+                        status: res.status || req.status,
+                    })
                 }
             }
             catch (err: any) {
@@ -75,7 +81,7 @@ export function useFetch(props: Props) {
                     transition: Bounce,
                 });
 
-                setError(text);
+                setError({text, status: err.status });
 
             } finally {
                 setLoading(false);

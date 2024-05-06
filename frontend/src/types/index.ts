@@ -1,3 +1,4 @@
+
 export enum PlatformsEnum {
     all = "all",
     Google_Stadia = "Google Stadia",

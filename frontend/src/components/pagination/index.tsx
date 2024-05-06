@@ -6,27 +6,27 @@ import { selectGames, setGamesFilters, useAppDispatch, useAppSelector } from 'st
 
 export function Pagination() {
     const { filters, games_count, loading } = useAppSelector(selectGames);
+    const { limit, page } = filters;
     const dispatch = useAppDispatch();
-    const pageCount = Math.ceil(games_count / filters.limit);
+    const pageCount = Math.ceil(games_count / limit);
 
     const setPage = ({ selected }: { selected: number }) => {
-        if(filters.page !== selected + 1){
-1
+        if (page !== selected + 1) {
             dispatch(setGamesFilters({ ...filters, page: selected + 1 }));
         }
     }
     return (
         <ReactPaginate
-            className={cls.pagination}
             pageCount={pageCount}
+            className={cls.pagination}
             activeClassName={cls.activePage}
             pageClassName={cls.page}
-            onPageActive={e => console.log(e.selected)}
             nextClassName={cls.page}
             disabledClassName={cls.disabledPage}
             previousClassName={cls.page}
             previousLabel={<FaAnglesLeft />}
             nextLabel={<FaAnglesRight />}
+            initialPage={page - 1}
             onPageChange={setPage}
             disableInitialCallback={loading}
             breakClassName={cls.break}

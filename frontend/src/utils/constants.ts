@@ -1,37 +1,45 @@
 
 export const InitialGamesFilters: GamesFiltersT = {
     page: 1,
-    language: "all",
+    language: "All",
     query: "",
-    voice_acting_language: "all",
-    platform: "all",
+    platform: "All",
+    voice_acting_language: "All",
     minimum_rating: 0,
-    offline_play_mode: "all",
-    online_play_mode: "all",
+    offline_play_mode: "All",
+    online_play_mode: "All",
     limit: 5,
-    order: "-release_date"
+    order: "-release_date",
 }
 
-export const languageOptions = [
-    { value: "all", label: "All" },
-    { value: "english", label: "English" },
-    { value: "russian", label: "Russian" },
-    { value: "japanese", label: "Japanese" },
+export const languageOptions: { value: LanguageT, label: LanguageT }[] = [
+    { value: "All", label: "All" },
+    { value: "English", label: "English" },
+    { value: "Russian", label: "Russian" },
+    { value: "Japanese", label: "Japanese" },
 ]
-export const orderOptions = [
-    { value: "-rating", label: "Rating (Heighest rating value)" },
-    { value: "rating", label: "Rating (Heighest rating value)" },
+
+export const orderOptions: { value: OrderT, label: string }[] = [
     { value: "-release_date", label: "Release date (Newest first)" },
-    { value: "'release_date", label: "Release date (Oldest first)" },
+    { value: "release_date", label: "Release date (Oldest first)" },
+    { value: "-rating", label: "Rating (Highest rated first)" },
+    { value: "rating", label: "Rating (Lowest rated first)" },
 ]
+
 export const limitOptions = [
     { value: 5, label: "5 games" },
     { value: 10, label: "10 games" },
     { value: 15, label: "15 games" },
 ]
 
-export const platformsOptions: { value: PlatformT, label: string }[] = [
-    { value: "all", label: "all" },
+export const playModeOptions: { value: PlayModeT, label: PlayModeT }[] = [
+    { value: 'All', label: "All" },
+    { value: 'Single-player', label: "Single-player" },
+    { value: 'Multiplayer', label: "Multiplayer" },
+]
+
+export const platformsOptions: { value: PlatformT, label: PlatformT }[] = [
+    { value: "All", label: "All" },
     { value: "PC (Microsoft Windows)", label: "PC (Microsoft Windows)" },
     { value: "Linux", label: "Linux" },
     { value: "Mac", label: "Mac" },

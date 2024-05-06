@@ -1,92 +1,110 @@
-import { useFetch } from "components/hooks";
-import { resetGamesFilters, selectGames, setGames, setGamesFilters, useAppDispatch, useAppSelector } from "store";
-import { Endpoints, InitialGamesFilters, limitOptions, orderOptions, languageOptions, platformsOptions } from "utils";
-import styles from "./filters.module.scss";
-import { useEffect, useRef } from "react";
+import { resetGamesFilters, selectGames, setGamesFilters, useAppDispatch, useAppSelector } from "store";
+import { InitialGamesFilters, limitOptions, orderOptions, languageOptions, platformsOptions, playModeOptions } from "utils";
+import cls from "./filters.module.scss";
 import Select from "react-select";
 
 
 export function GamesFilters() {
     const { games, filters, games_count } = useAppSelector(selectGames);
-    const filtersRef = useRef(filters);
-    const filtersChanged = JSON.stringify(filtersRef.current) !== JSON.stringify(filters);
-
+    const { limit, platform, language, offline_play_mode, online_play_mode, voice_acting_language, order } = filters;
     const dispatch = useAppDispatch();
-    
-    const url = games.length === 0 ? Endpoints.games(filters) : null;
 
-    const { setUrl } = useFetch({ reducer: setGames, url });
-
-    const setValue = (key: keyof typeof filters, value?: string | number): void => {
+    const setValue = (key: keyof typeof filters, value?: string | number | number[]): void => {
         if (value) {
-            const updated_filters = { ...filters, [key]: value };
+            const updated_filters = { ...filters, [key]: value, page: 1 };
             dispatch(setGamesFilters(updated_filters));
         }
     }
-
     const reset = (): void => {
-        // change the state and fetch new games only when the intial filters differ from the current state
+        // change the state only when the intial filters differ from the current state
         if (JSON.stringify(InitialGamesFilters) !== JSON.stringify(filters)) {
             dispatch(resetGamesFilters());
         }
     }
-
-    useEffect(() => {
-        if (filtersChanged) {
-            const url = Endpoints.games(filters);
-            filtersRef.current = filters;
-            setUrl(url);
-        }
-    }, [filtersRef, setUrl, filtersChanged, filters]);
+    const styles = {
+        option: (base: any, state: any) => ({
+            ...base,
+            backgroundColor: state.isSelected ? 'var(--main-color)' : 'white',
+            cursor: 'pointer',
+            ":hover": {
+                background: 'var(--main-color-dark)',
+                color: 'white',
+            }
+        }),
+    }
 
     return (
-        <div className={styles.wrapper}>
-            <div className={styles.section}>
-                <div className={styles.games_count}> {games.length} of {games_count}</div>
+        <div className={cls.wrapper}>
+            <div className={cls.section}>
+                <div className={cls.games_count}> {games.length} of {games_count}</div>
             </div>
-            <div className={styles.section}>
-                <div className={styles.title}>Language</div>
+            <div className={cls.section}>
+                <div className={cls.title}>Language</div>
                 <Select
+                    name="language"
                     options={languageOptions}
                     onChange={s => setValue('language', s?.value)}
-                    defaultValue={languageOptions[0]}
+                    value={{ value: language, label: language }}
+                    styles={styles}
                 />
             </div>
-            <div className={styles.section}>
-                <div className={styles.title}>Platform</div>
+            <div className={cls.section}>
+                <div className={cls.title}>Platform</div>
                 <Select
-                    defaultValue={platformsOptions[0]}
+                    value={{ value: platform, label: platform }}
                     options={platformsOptions}
                     onChange={s => setValue('platform', s?.value)}
+                    styles={styles}
                 />
             </div>
-            <div className={styles.section}>
-                <div className={styles.title}>Order by</div>
+            <div className={cls.section}>
+                <div className={cls.title}>Order by</div>
                 <Select
-                    defaultValue={orderOptions[0]}
+                    value={{ value: order, label: orderOptions.find(i => i.value === order)?.label }}
                     options={orderOptions}
                     onChange={s => setValue('order', s?.value)}
+                    styles={styles}
                 />
             </div>
-            <div className={styles.section}>
-                <div className={styles.title}>Games per page</div>
+            <div className={cls.section}>
+                <div className={cls.title}>Games per page</div>
                 <Select
                     options={limitOptions}
                     onChange={s => setValue('limit', s?.value)}
-                    defaultValue={limitOptions[0]}
+                    value={{ value: limit, label: limitOptions.find(i => i.value === limit)?.label }}
+                    styles={styles}
                 />
             </div>
-            <div className={styles.section}>
-                <div className={styles.title}>Voice acting language</div>
+            <div className={cls.section}>
+                <div className={cls.title}>Voice acting language</div>
                 <Select
-                    defaultValue={languageOptions[0]}
+                    value={{ value: voice_acting_language, label: voice_acting_language }}
                     options={languageOptions}
                     onChange={s => setValue('voice_acting_language', s?.value)}
+                    styles={styles}
                 />
             </div>
-            <div className={styles.section}>
+            <div className={cls.section}>
+                <div className={cls.title}>Offline mode</div>
+                <Select
+                    options={playModeOptions}
+                    onChange={s => setValue('offline_play_mode', s?.value)}
+                    styles={styles}
+                    value={{ value: offline_play_mode, label: offline_play_mode }}
+                />
+            </div>
+            <div className={cls.section}>
+                <div className={cls.title}>Online mode</div>
+                <Select
+                    options={playModeOptions}
+                    value={{ value: online_play_mode, label: online_play_mode }}
+                    onChange={s => setValue('online_play_mode', s?.value)}
+                    styles={styles}
+                />
+            </div>
+            <div className={cls.section}>
                 <button
-                    className={styles.resetButton}
+                    className={cls.resetButton}
                     type="button"
                     onClick={reset}>
                     Reset

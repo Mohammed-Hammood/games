@@ -76,6 +76,18 @@ function GamePage() {
                         <span key={item}>{item}</span>
                     )}
                 </div>
+                <div className={styles.languages}>
+                    <div className={styles.subtitle}>Interface language:</div>
+                    {game.available_languages.map(item =>
+                        <span key={item}>{item}</span>
+                    )}
+                </div>
+                <div className={styles.languages}>
+                    <div className={styles.subtitle}>Voice acting language:</div>
+                    {game.available_languages.map(item =>
+                        <span key={item}>{item}</span>
+                    )}
+                </div>
                 <div className={styles.genres}>
                     <div className={styles.subtitle}>Genres:</div>
                     {game.genres.map(item => <span key={item}>{item}</span>)}

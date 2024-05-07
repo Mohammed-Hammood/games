@@ -5,7 +5,6 @@ const allowedOrigins = [
 	'http://localhost:3000',
 	'http://localhost:3001',
 	'https://games-frontend1.vercel.app',
-	'https://games-rose-three.vercel.app',
 ];
 
 export function middleware(req: NextRequest) {

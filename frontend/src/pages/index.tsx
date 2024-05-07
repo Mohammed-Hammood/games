@@ -8,7 +8,7 @@ export default function Pages() {
     return (
         <Routes>
             <Route element={<HomePage />} path={AppRoutes.home} />
-            <Route element={<GamePage />} path={AppRoutes.game()} />
+            <Route element={<GamePage />} path={"/game/:slug"} />
             <Route element={<Error404 />} path={AppRoutes.all} />
         </Routes>
     )

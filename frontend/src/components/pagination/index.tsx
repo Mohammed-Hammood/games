@@ -1,7 +1,7 @@
 import cls from "./pagination.module.scss";
 import ReactPaginate from "react-paginate"
 import { FaAnglesLeft, FaAnglesRight } from "react-icons/fa6";
-import { selectGames, setGamesFilters, useAppDispatch, useAppSelector } from 'store';
+import { selectGames, setFilters, useAppDispatch, useAppSelector } from 'store';
 
 
 export function Pagination() {
@@ -13,7 +13,7 @@ export function Pagination() {
     const setPage = ({ selected }: { selected: number }) => {
 
         if (page !== selected + 1) {
-            dispatch(setGamesFilters({ ...filters, page: selected + 1 }));
+            dispatch(setFilters({ ...filters, page: selected + 1 }));
         }
     }
     return (

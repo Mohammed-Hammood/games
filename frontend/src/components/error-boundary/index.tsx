@@ -22,7 +22,6 @@ function FallbackRender({ error }: FallbackProps) {
     );
 }
 
-
 export function ErrorBoundaryProvider({ children }: Props) {
 
     return (

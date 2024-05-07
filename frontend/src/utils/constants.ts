@@ -10,6 +10,7 @@ export const InitialGamesFilters: GamesFiltersT = {
     online_play_mode: "All",
     limit: 5,
     order: "-release_date",
+    redirect: false,
 }
 
 export const languageOptions: { value: LanguageT, label: LanguageT }[] = [

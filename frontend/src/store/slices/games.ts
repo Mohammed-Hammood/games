@@ -21,13 +21,13 @@ export const gamesSlice = createSlice({
             state.games = actions.payload.games;
             state.games_count = actions.payload.games_count;
         },
-        resetGamesFilters(state) {
+        resetFilters(state) {
             state.filters = initialState.filters;
         },
-        setGamesFilters(state, actions: PayloadAction<GamesFiltersT>) {
+        setFilters(state, actions: PayloadAction<GamesFiltersT>) {
             state.filters = actions.payload;
         },
     }
 });
 
-export const { resetGamesFilters, setGames, setGamesFilters } = gamesSlice.actions;
+export const { resetFilters, setGames, setFilters } = gamesSlice.actions;

@@ -45,6 +45,7 @@ type GamesFiltersT = {
     minimum_rating: number;
     offline_play_mode: PlayModeT;
     online_play_mode: PlayModeT;
+    redirect: boolean;
 }
 
 type GameT = {

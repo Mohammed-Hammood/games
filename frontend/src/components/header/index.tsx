@@ -3,15 +3,15 @@ import type { FormEvent } from 'react';
 import styles from './header.module.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import { AppRoutes } from 'utils';
-import { selectFilters, setGamesFilters, useAppDispatch, useAppSelector } from 'store';
+import { selectFilters, setFilters, useAppDispatch, useAppSelector } from 'store';
 import { FaMagnifyingGlass, FaRobot } from "react-icons/fa6";
 import { MdClear } from "react-icons/md";
 
 
 export function Header() {
     const filters = useAppSelector(selectFilters);
-    const dispatch = useAppDispatch();
     const [query, setQuery] = useState<string>(filters.query);
+    const dispatch = useAppDispatch();
     const navigate = useNavigate()
 
     const submitHandler = (e: FormEvent<HTMLFormElement>) => {
@@ -20,26 +20,29 @@ export function Header() {
         const q = query.trim();
 
         if (q.length > 0 && query !== filters.query) {
+            navigate(AppRoutes.home);
 
-            dispatch(setGamesFilters({
+            dispatch(setFilters({
                 ...filters,
                 query: q,
-                page: 1
+                page: 1,
+                redirect: true,
             }));
 
-            navigate("/");
         }
     }
     const clear = () => {
-        
+
         setQuery("");
-        
+
         if (filters.query.length > 0) {
-            
-            dispatch(setGamesFilters({
+            navigate(AppRoutes.home);
+
+            dispatch(setFilters({
                 ...filters,
                 query: "",
-                page: 1
+                redirect: true,
+                page: 1,
             }));
         }
     }

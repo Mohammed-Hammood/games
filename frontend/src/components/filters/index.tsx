@@ -1,4 +1,4 @@
-import { resetGamesFilters, selectGames, setGamesFilters, useAppDispatch, useAppSelector } from "store";
+import { resetFilters, selectGames, setFilters, useAppDispatch, useAppSelector } from "store";
 import { InitialGamesFilters, limitOptions, orderOptions, languageOptions, platformsOptions, playModeOptions } from "utils";
 import cls from "./filters.module.scss";
 import Select from "react-select";
@@ -12,13 +12,13 @@ export function GamesFilters() {
     const setValue = (key: keyof typeof filters, value?: string | number | number[]): void => {
         if (value) {
             const updated_filters = { ...filters, [key]: value, page: 1 };
-            dispatch(setGamesFilters(updated_filters));
+            dispatch(setFilters(updated_filters));
         }
     }
     const reset = (): void => {
         // change the state only when the intial filters differ from the current state
         if (JSON.stringify(InitialGamesFilters) !== JSON.stringify(filters)) {
-            dispatch(resetGamesFilters());
+            dispatch(resetFilters());
         }
     }
     const styles = {

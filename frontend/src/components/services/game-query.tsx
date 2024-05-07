@@ -10,7 +10,6 @@ export function useGameQuery() {
     const { games } = useAppSelector(selectGames);
     const [game, setGame] = useState<undefined | GameT>(games.find(item => item.slug === slug));
     
-
     const url = !game ? Endpoints.game(slug) : null;
 
     const setData = ({ game }: { game: GameT }) => {

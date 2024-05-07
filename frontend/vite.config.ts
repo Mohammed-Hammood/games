@@ -8,7 +8,6 @@ export default defineConfig({
 	plugins: [
 		react(),
 		tsConfigPaths(),
-		
 	],
 	server: {
 		port: 3000
@@ -16,7 +15,7 @@ export default defineConfig({
 	test: {
 		name: "node",
 		globals: true,
-		setupFiles:"./setup",
+		setupFiles: "./setup",
 		root: "./src/tests",
 		environment: "jsdom",
 	}

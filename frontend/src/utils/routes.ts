@@ -1,6 +1,6 @@
 
 export const AppRoutes = {
     home: "/",
-    game: (slug: string = ":slug") => `${slug}`,
+    game: (slug: string = ":slug") => `game/${slug}`,
     all: "*",
 }

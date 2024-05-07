@@ -1,12 +1,12 @@
 
+import { AppRoutes, formated_date } from "utils";
 import { Link } from 'react-router-dom';
 import styles from './card.module.scss';
-import { AppRoutes, formated_date } from "utils";
 import { FaStar } from 'react-icons/fa6';
 
 export function Card({ game }: { game: GameT }) {
 
-    const game_url = AppRoutes.game(game.slug);
+    const gameURL = AppRoutes.game(game.slug);
 
     const getMode = ({ mode, max_players_count }: { mode: PlayModeT[], max_players_count: number }) => {
         return mode.map(item => <span key={item}>
@@ -19,7 +19,7 @@ export function Card({ game }: { game: GameT }) {
 
             <div className={styles.content}>
                 <div className={styles.title}>
-                    <Link to={game_url} >
+                    <Link to={gameURL} >
                         {game.title}
                     </Link>
                 </div>
@@ -60,9 +60,11 @@ export function Card({ game }: { game: GameT }) {
                 <div className={styles.description}>
                     {game.description}
                 </div>
-                <Link className={styles.readMoreButton} to={game_url}>Read more</Link>
+                <Link className={styles.readMoreButton} to={gameURL}>
+                    Read more
+                </Link>
             </div>
-            <Link to={AppRoutes.game(game.slug)}>
+            <Link to={gameURL}>
                 <img className={styles.img} src={game.cover} alt="img" />
             </Link>
         </article>

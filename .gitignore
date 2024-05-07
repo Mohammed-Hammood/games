@@ -17,8 +17,7 @@ client/node_modules
 # next.js
 /.next/
 /out/
-games
-/games
+
 # production
 client/build
 

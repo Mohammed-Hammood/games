@@ -15,11 +15,11 @@ type Props = {
     reducer?: (data: any) => UnknownAction;
     setData?: (data: any) => void;
     url?: string | null;
-    headers?: any;
     method?: MethodT;
     data?: any
 };
 
+// useFetch fetches data only when you pass url to it by setURL or in the props
 export function useFetch(props: Props) {
     const [method, setMethod] = useState<MethodT>(props.method || "GET");
     const [data, setData] = useState<any>(props.data);
@@ -32,7 +32,7 @@ export function useFetch(props: Props) {
 
     useEffect(() => {
         const options: InitialRequest = {
-            headers: { 'Content-Type': 'application/json', },
+            headers: { 'Content-Type': 'application/json'},
             method: method
         }
 
@@ -42,6 +42,8 @@ export function useFetch(props: Props) {
         }
 
         const sendRequest = async (url: string): Promise<void> => {
+            setLoading(true);
+
             try {
                 const req = await fetch(url, options);
                 
@@ -88,12 +90,14 @@ export function useFetch(props: Props) {
                 setUrl(null);
             }
         }
+
         if (url && !loading) {
             setError(null);
-            setLoading(true);
             sendRequest(url);
         }
+
     }, [dispatch, url, loading, data, method, navigate, setUrl, setMethod, setLoading, props, setError])
+    
     return {
         loading,
         method,

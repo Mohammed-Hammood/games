@@ -7,3 +7,4 @@ export * from "./filters";
 export * from "./image-magnifier";
 export * from "./pagination";
 export * from "./services";
+export * from "./error-boundary";

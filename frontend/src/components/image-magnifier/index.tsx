@@ -10,7 +10,6 @@ type Props = {
     setImage: (image: string | null) => void;
 }
 
-
 export function ImageMagnifier({ image, setImage }: Props) {
     const [background, setBackground] = useState<"blur" | "dark">("blur");
     const [imageWidth, setImageWidth] = useState<number>(100);
@@ -49,12 +48,12 @@ export function ImageMagnifier({ image, setImage }: Props) {
         }
 
     }, [image, setImage, imageWidth, setImageWidth]);
-     
+
     return (
         image ?
             <div className={cls[background]}>
                 <img
-                    alt="Image not found"
+                    alt="Image"
                     src={image}
                     className={cls.image}
                     width={imageWidth + "%"}
@@ -93,7 +92,7 @@ export function ImageMagnifier({ image, setImage }: Props) {
                             title={("Zoom in")}
                             className={cls.button}
                         >
-                           <FaMagnifyingGlassPlus />
+                            <FaMagnifyingGlassPlus />
                         </button>
                     </div>
 

@@ -38,3 +38,32 @@
     src: url("./fonts/Montserrat-Bold.ttf") format("truetype");
     font-weight: bold;
 }
+
+@font-face {
+    font-family: "times new roman";
+    src: url("./fonts/times-new-roman.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "times new roman";
+    src: url("./fonts/times-new-roman-bold.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "times new roman";
+    src: url("./fonts/times-new-roman-bold-italic.ttf") format("truetype");
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "times new roman";
+    src: url("./fonts/times-new-roman-italic.ttf") format("truetype");
+    font-weight: normal;
+    font-style: italic;
+}
+

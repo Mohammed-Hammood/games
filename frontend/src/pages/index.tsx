@@ -4,7 +4,6 @@ import HomePage from "./home";
 import GamePage from "./game";
 import Error404 from "./404";
 
-
 export default function Pages() {
     return (
         <Routes>

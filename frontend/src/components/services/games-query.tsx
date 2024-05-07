@@ -1,20 +1,18 @@
 import { useFetch } from "components";
-import { resetGames, selectGames, setGames, useAppDispatch, useAppSelector } from "store";
+import { selectGames, setGames, useAppSelector } from "store";
 import { Endpoints } from "utils";
 import { useEffect, useRef } from "react";
 
 
-export function GamesAPIService() {
+export function useGamesQuery() {
     const { games, filters } = useAppSelector(selectGames);
-
-    const dispatch = useAppDispatch();
 
     const filtersRef = useRef(filters);
 
     //passing url to useFetch in the first time to fetch games as the games length is always zero at the first load 
     const url = games.length === 0 ? Endpoints.games(filters) : null;
 
-    const { setUrl } = useFetch({ reducer: setGames, url });
+    const { setUrl, loading } = useFetch({ reducer: setGames, url });
 
 
     useEffect(() => {
@@ -25,12 +23,14 @@ export function GamesAPIService() {
 
             filtersRef.current = filters;
 
-            dispatch(resetGames());
-            
             setUrl(url);
-
         }
 
     }, [filtersRef, setUrl, filters]);
-    return null;
+
+    return {
+        loading,
+        games,
+        filters,
+    }
 }

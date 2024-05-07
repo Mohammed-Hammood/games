@@ -13,14 +13,15 @@ export function Loader(props: Props) {
 
     if (type === 'card') {
         const cards = Array.from({ length: cards_count ?? 1 }, (_, i) => i);
-
+        const subLayers = Array.from({length: 5});
+        
         return (
             <div className={styles.cardsWrapper}>
                 {cards.map(item =>
 
                     <div className={styles.card} key={item}>
                         <div className={styles.block}>
-                            {Array.from({length: 5}).map((_, i) => <div key={i} className={styles.layer}></div>)}
+                            {subLayers.map((_, i) => <div key={i} className={styles.layer}></div>)}
                         </div>
                         <div className={styles.block}>
                             <div className={styles.square}></div>

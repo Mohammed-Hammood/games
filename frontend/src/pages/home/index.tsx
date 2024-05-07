@@ -1,10 +1,10 @@
-import { Card, Loader, GamesFilters, Pagination } from "components";
-import { useAppSelector, selectGames } from "store";
+import { Card, Loader, GamesFilters, Pagination, useGamesQuery } from "components";
 import cls from "./home.module.scss";
 
 
+
 function HomePage() {
-    const { filters, loading, games } = useAppSelector(selectGames);
+    const { filters:{ limit }, loading, games } = useGamesQuery();
 
     return (
         <main className={cls.main}>
@@ -12,12 +12,18 @@ function HomePage() {
             <div className={cls.games_wrapper}>
                 <div className={cls.games_center_content}>
                     {loading
-                        ? <Loader type={'card'} cards_count={filters.limit} />
+                        ? <Loader type={'card'} cards_count={limit} />
 
                         : <>
                             {<Pagination />}
-                            {games.map(game => <Card game={game} key={game.id} />)}
-                            {games.length >= 5 && <Pagination />}
+
+                            {games.map(game => (
+                                <Card game={game} key={game.id} />
+                            ))}
+
+                            {games.length >= 5 && (
+                                <Pagination />
+                            )}
 
                         </>
                     }

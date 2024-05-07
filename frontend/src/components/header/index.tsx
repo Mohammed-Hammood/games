@@ -3,13 +3,13 @@ import type { FormEvent } from 'react';
 import styles from './header.module.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import { AppRoutes } from 'utils';
-import { selectGames, setGamesFilters, useAppDispatch, useAppSelector } from 'store';
+import { selectFilters, setGamesFilters, useAppDispatch, useAppSelector } from 'store';
 import { FaMagnifyingGlass, FaRobot } from "react-icons/fa6";
 import { MdClear } from "react-icons/md";
 
 
 export function Header() {
-    const { filters } = useAppSelector(selectGames);
+    const filters = useAppSelector(selectFilters);
     const dispatch = useAppDispatch();
     const [query, setQuery] = useState<string>(filters.query);
     const navigate = useNavigate()

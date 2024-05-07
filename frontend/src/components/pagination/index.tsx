@@ -5,12 +5,13 @@ import { selectGames, setGamesFilters, useAppDispatch, useAppSelector } from 'st
 
 
 export function Pagination() {
-    const { filters, games_count, loading } = useAppSelector(selectGames);
+    const { filters, games_count } = useAppSelector(selectGames);
     const { limit, page } = filters;
     const dispatch = useAppDispatch();
     const pageCount = Math.ceil(games_count / limit);
 
     const setPage = ({ selected }: { selected: number }) => {
+
         if (page !== selected + 1) {
             dispatch(setGamesFilters({ ...filters, page: selected + 1 }));
         }
@@ -28,9 +29,7 @@ export function Pagination() {
             nextLabel={<FaAnglesRight />}
             initialPage={page - 1}
             onPageChange={setPage}
-            disableInitialCallback={loading}
             breakClassName={cls.break}
-            renderOnZeroPageCount={(loading) ? null : undefined}
         />
     )
 }

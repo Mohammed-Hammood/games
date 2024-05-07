@@ -1,17 +1,17 @@
-import styles from './game.module.scss';
+import { ImageMagnifier, Loader, useGameQuery } from 'components';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from 'swiper/modules';
-import { ImageMagnifier, Loader, GameAPIService } from 'components';
 import { useState } from 'react';
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { FaWikipediaW, FaTwitter } from "react-icons/fa";
 import { RiYoutubeLine } from "react-icons/ri";
 import { formated_date } from 'utils';
 import { FaStar } from 'react-icons/fa6';
+import styles from './game.module.scss';
 
 
 function GamePage() {
-    const { error, loading, game } = GameAPIService();
+    const { error, loading, game } = useGameQuery();
     const [image, setImage] = useState<string | null>(null);
 
     const icons = {
@@ -40,14 +40,16 @@ function GamePage() {
         <main className={styles.main}>
             <ImageMagnifier image={image} setImage={setImage} />
             <div className={styles.game}>
-                <div className={styles.imageWrapper} style={{ backgroundImage: `url(${game.cover})` }}>
+                <div className={styles.coverWrapper}>
+                    <img
+                        className={styles.cover}
+                        src={game.cover}
+                        alt={game.title}
+                        onClick={() => setImage(game.cover ?? null)}
+                    />
+
+                    <div className={styles.background} style={{ backgroundImage: `url(${game.cover})` }}></div>
                 </div>
-                <img
-                    className={styles.img}
-                    src={game.cover}
-                    alt={game.title}
-                    onClick={() => setImage(game.cover ?? null)}
-                />
 
                 <div className={styles.title}>
                     {game.title}

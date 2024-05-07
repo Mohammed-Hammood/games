@@ -1,2 +1,2 @@
-export * from "./games-api";
-export * from "./game-api";
+export * from "./games-query";
+export * from "./game-query";

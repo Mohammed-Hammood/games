@@ -1,0 +1,53 @@
+html {
+    --main-color: #16acac;    
+    --main-color-light: rgb(0, 185, 185);    
+    --main-color-dark: #009595;   
+    --electric-indigo: #6600FF;
+    --bg-start-rgb: rgba(1, 12, 160, 0.308);
+    --bg-end-rgb: rgb(8, 16, 65);
+    --color-rbg: 255 255 255;
+    --border-color: rgb(213, 213, 213);
+    --white: rgb(255, 255, 255);
+    --green: rgb(0, 128, 0);
+    --black: rgb(0, 0, 0);
+    --red: #ff0000;
+    --pink: #FCEFF9;
+    --dark-red: #8b0000;
+    --dark-green: #006400;
+    --yellow: #ffff00;
+    --teal: #008080;
+    --lightblue: #add8e6;
+    --silver: #c0bfbf;
+    --blue: #0000ff;
+    --dark-teal: #0B5F61;
+    --darkcyan:hsl(180, 100%, 27%);
+    --persian-indigo: #33037c;
+    --color: #000000;
+    --kettle-black:#080708;
+    --caribbean-green: #00CC99;
+    --font-size-larger: 1.25rem; //20px
+    --font-size-large: 1.125rem; //18px
+    --font-size-normal: 1rem; //16px
+    --font-size-small: 0.813rem; //13px 
+    --font-size-smaller: 0.625rem; //10px
+}
+
+@media screen and (max-width: 775px) {
+    html {
+        --font-size-larger: 1.125rem; //18px
+        --font-size-large: 1rem; //16px
+        --font-size-normal: 0.875rem; // 14px
+        --font-size-small: 0.688rem; //11px
+        --font-size-smaller: .5rem; //8px
+    }
+}
+
+@media screen and (max-width: 400px) {
+    html {
+        --font-size-larger: 1.063rem; //17px
+        --font-size-large: 0.938rem; //15px
+        --font-size-normal: 0.813rem; //13px
+        --font-size-small: 0.625rem; //10px
+        --font-size-smaller: 0.438rem; //7px
+    }
+}

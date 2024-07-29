@@ -8,31 +8,28 @@ import { useState } from "react";
 type DataResponse = {
     games: GameT[]
     games_count: number
-
 }
 
-export function useGamesQuery(data: { games: GameT[], games_count: number }) {
-    const [filters, setFilters] = useState<GamesFiltersT>(InitialGamesFilters)
+export function useGamesQuery(initialData: { games: GameT[], games_count: number }) {
+    const [filters, setFilters] = useState<GamesFiltersT>(InitialGamesFilters);
 
     const url = Endpoints.games(filters);
 
-    const { data: _, isLoading } = useQuery<any, Error, DataResponse, string[]>({
+    const { data, isLoading } = useQuery<any, Error, DataResponse, string[]>({
         queryKey: [url],
         queryFn: () => getGames(url),
-        initialData: data
+        initialData: initialData,
     })
-
-    const { games, games_count } = _ ?? { games: [], games_count: 0 }
 
 
     const resetFilters = () => setFilters(InitialGamesFilters);
 
     return {
         isLoading,
-        setFilters,
-        games,
-        games_count,
-        resetFilters,
         filters,
+        setFilters,
+        resetFilters,
+        games: data?.games ?? [],
+        games_count: data?.games_count ?? 0,
     }
 }

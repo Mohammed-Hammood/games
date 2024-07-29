@@ -7,24 +7,24 @@ import { getGame } from "@/server"
 type DataResponse = {
     game: GameT
 }
+type TError = {
+    error: string
+}
 
-export function useGameQuery({ slug, game: _ }: { slug: string, game?: GameT }) {
+export function useGameQuery({ slug, game:initialData }: { slug: string, game?: GameT }) {
     const url = Endpoints.game(slug);
 
-    const { data, isLoading, error } = useQuery<any, Error, DataResponse, string[]>({
+    const { data, isLoading, error } = useQuery<any, TError, DataResponse, string[]>({
         queryKey: [slug],
         queryFn: () => getGame(url),
         initialData: {
-            game: _
+            game: initialData
         }
     })
 
-    const { game } = data ?? { game: null }
-
     return {
-        game,
+        game: data?.game,
         error,
         isLoading,
-        data,
     }
 }

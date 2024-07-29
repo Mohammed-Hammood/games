@@ -8,7 +8,7 @@ export function HomePage({ data }: { data: { games: GameT[], games_count: number
     const { filters, isLoading, games, resetFilters, setFilters, games_count } = useGamesQuery(data);
 
     return (
-        <div className={cls.main}>
+        <main className={cls.main}>
             <GamesFilters
                 games={games}
                 games_count={games_count}
@@ -44,6 +44,6 @@ export function HomePage({ data }: { data: { games: GameT[], games_count: number
                     }
                 </div>
             </div>
-        </div>
+        </main>
     )
 }

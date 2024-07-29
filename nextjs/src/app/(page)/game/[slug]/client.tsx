@@ -34,7 +34,7 @@ export default function GamePage({ params: { slug }, game: _ }: Props) {
             <div className={styles.loaderWrapper}>
                 {isLoading ?
                     <Loader size={80} /> :
-                    <h2>{error?.error}</h2>
+                    <h2>{error}</h2>
                 }
             </div>
         )

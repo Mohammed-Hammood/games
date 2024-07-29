@@ -7,11 +7,19 @@ export const getGameBySlug = (slug: string) => {
 export const getGame = async (url: string) => {
     const req = await fetch(url)
     const res = await req.json()
+    if (!res.ok){
+        throw res.error
+    }
     return res;
 }
 export const getGames = async (url: string) => {
     const req = await fetch(url)
     const res = await req.json()
+    
+    if (!res.ok){
+        throw res.error
+    }
+
     return res;
 }
 

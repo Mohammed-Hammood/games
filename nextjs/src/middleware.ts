@@ -4,7 +4,7 @@ import type { NextRequest } from "next/server";
 const allowedOrigins = [
 	'http://localhost:3000',
 	'http://localhost:3001',
-	'https://games-frontend1.vercel.app',
+	'https://games-reactjs.vercel.app',
 ];
 
 export function middleware(req: NextRequest) {

@@ -10,7 +10,7 @@ type DataResponse = {
     games_count: number
 }
 
-export function useGamesQuery(initialData: { games: GameT[], games_count: number }) {
+export function useGamesQuery() {
     const [filters, setFilters] = useState<GamesFiltersT>(InitialGamesFilters);
 
     const url = Endpoints.games(filters);
@@ -18,9 +18,7 @@ export function useGamesQuery(initialData: { games: GameT[], games_count: number
     const { data, isLoading } = useQuery<any, Error, DataResponse, string[]>({
         queryKey: [url],
         queryFn: () => getGames(url),
-        initialData: initialData,
     })
-
 
     const resetFilters = () => setFilters(InitialGamesFilters);
 

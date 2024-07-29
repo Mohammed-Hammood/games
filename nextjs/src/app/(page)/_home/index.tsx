@@ -4,8 +4,8 @@ import cls from "./home.module.scss";
 
 
 
-export function HomePage({ data }: { data: { games: GameT[], games_count: number } }) {
-    const { filters, isLoading, games, resetFilters, setFilters, games_count } = useGamesQuery(data);
+export function HomePage() {
+    const { filters, isLoading, games, resetFilters, setFilters, games_count } = useGamesQuery();
 
     return (
         <main className={cls.main}>

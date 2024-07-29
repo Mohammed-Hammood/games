@@ -1,7 +1,7 @@
 "use client"
 import { ImageMagnifier, Loader, useGameQuery } from '@/components';
-// import { Swiper, SwiperSlide } from "swiper/react";
-// import { Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from 'swiper/modules';
 import { useState } from 'react';
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { FaWikipediaW, FaTwitter } from "react-icons/fa";
@@ -14,12 +14,12 @@ type Props = {
     params: {
         slug: string
     }
-    game?:GameT
+    game?: GameT
 }
 
-export default function GamePage({ params: { slug }, game:_ }: Props) {
+export default function GamePage({ params: { slug }, game: _ }: Props) {
 
-    const { error, isLoading, game } = useGameQuery({ slug, game:_ });
+    const { error, isLoading, game } = useGameQuery({ slug, game: _ });
     const [image, setImage] = useState<string | null>(null);
 
     const icons = {
@@ -117,7 +117,7 @@ export default function GamePage({ params: { slug }, game:_ }: Props) {
                     <div className={styles.subtitle}>Screenshots: {game.screenshots.length}</div>
                     <div className={styles.screenshots_content}>
 
-                        {/* <Swiper
+                        <Swiper
                             className={styles.swiper}
                             pagination={true}
                             modules={[Pagination]}
@@ -138,10 +138,15 @@ export default function GamePage({ params: { slug }, game:_ }: Props) {
                         >
                             {game.screenshots.map(url =>
                                 <SwiperSlide key={url}>
-                                    <img key={url} src={url} onClick={() => setImage(url)} />
+                                    {/* eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text */}
+                                    <img
+                                        key={url}
+                                        src={url}
+                                        onClick={() => setImage(url)}
+                                    />
                                 </SwiperSlide>
                             )}
-                        </Swiper> */}
+                        </Swiper>
                     </div>
                 </div>
                 <div className={styles.social_sites}>

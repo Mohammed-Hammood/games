@@ -1,12 +1,14 @@
 # Games application
 
-- This application is implemented in two ways using React and Nextjs.
+- The application is implemented in two ways using React and Nextjs.
 
 ### React application
 - `React`, `Vite`, `TypeScript`, `JavaScript`, `NodeJs`, `Reduxjs/toolkit`, 
+- Link: (https://games-reactjs-vercel.app)[https://games-reactjs-vercel.app]
 
 ### Nextjs application
 - `Nextjs`, `TypeScript`, `JavaScript`, `NodeJs`, `Sass`, `React query`, 
+- Link: (https://games-nextjs-vercel.app)[https://games-nextjs-vercel.app]
 
 
 ## How to run the application locally?

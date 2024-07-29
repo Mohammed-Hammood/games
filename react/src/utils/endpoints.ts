@@ -1,5 +1,5 @@
 
-const baseURL = 'https://backend-api-games.vercel.app/api';
+const baseURL = 'https://games-nextjs.vercel.app/api';
 // const baseURL = `http://localhost:3001/api`;
 
 

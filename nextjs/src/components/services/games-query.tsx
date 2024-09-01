@@ -2,7 +2,8 @@
 import { getGames } from "@/server";
 import { Endpoints, InitialGamesFilters } from "@/utils";
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import { toast, Bounce } from "react-toastify"
 
 type DataResponse = {
@@ -14,19 +15,21 @@ type TError = string;
 
 
 export function useGamesQuery() {
+    const query = useSearchParams().get("query") ?? ''
     const [filters, setFilters] = useState<GamesFiltersT>(InitialGamesFilters);
 
-    const url = Endpoints.games(filters);
+    const url = Endpoints.games({ ...filters, query })
 
     const { data, isLoading, error } = useQuery<any, TError, DataResponse, string[]>({
         queryKey: [url],
+
         queryFn: () => getGames(url),
         retry: 2,
     })
 
-    const resetFilters = () => setFilters(InitialGamesFilters);
+    const resetFilters = () => setFilters(InitialGamesFilters)
 
-    if (error) {
+    useEffect(() => {
         toast.error(error, {
             position: "top-right",
             autoClose: 3000,
@@ -38,7 +41,9 @@ export function useGamesQuery() {
             theme: "colored",
             transition: Bounce,
         })
-    }
+
+    }, [error])
+
     return {
         isLoading,
         filters,

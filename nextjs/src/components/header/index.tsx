@@ -3,52 +3,35 @@
 import { useState } from 'react';
 import type { FormEvent } from 'react';
 import styles from './header.module.scss';
-import Link  from 'next/link';
-// import {useNavigate}
+import Link from 'next/link';
+import { useRouter, useSearchParams } from 'next/navigation'
 import { AppRoutes } from '@/utils';
-// import { selectFilters, setFilters, useAppDispatch, useAppSelector } from 'store';
 import { FaMagnifyingGlass, FaRobot } from "react-icons/fa6";
 import { MdClear } from "react-icons/md";
 
 
 export function Header() {
-    // const filters = useAppSelector(selectFilters);
-    const [query, setQuery] = useState<string>('');
-    // const dispatch = useAppDispatch();
-    // const navigate = useNavigate()
+    const querySearch = useSearchParams().get("query") ?? ''
+    
+    const [query, setQuery] = useState<string>(querySearch)
+    const router = useRouter()
 
     const submitHandler = (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+        e.preventDefault()
 
-        const q = query.trim();
+        const q = query.trim()
 
-        // if (q.length > 0 && query !== filters.query) {
-            // navigate(AppRoutes.home);
+        if(q.length > 0){
+            router.push(`${AppRoutes.home}/?query=${q}`)
+        }
 
-            // dispatch(setFilters({
-            //     ...filters,
-            //     query: q,
-            //     page: 1,
-            //     redirect: true,
-            // }));
-
-        // }
     }
+    
     const clear = () => {
-
-        // setQuery("");
-
-        // if (filters.query.length > 0) {
-        //     navigate(AppRoutes.home);
-
-        //     dispatch(setFilters({
-        //         ...filters,
-        //         query: "",
-        //         redirect: true,
-        //         page: 1,
-        //     }));
-        // }
+        setQuery("")
+        router.push(AppRoutes.home)
     }
+
     return (
         <>
             <header className={styles.wrapper}>

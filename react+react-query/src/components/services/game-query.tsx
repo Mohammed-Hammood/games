@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { CustomError, Endpoints } from "utils";
+import { Endpoints } from "utils";
 import { GamesQuery } from "./games-query";
 import { useQuery } from "@tanstack/react-query";
 

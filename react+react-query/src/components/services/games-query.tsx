@@ -1,4 +1,4 @@
-import { CustomError, Endpoints } from "utils";
+import { Endpoints } from "utils";
 import { useQuery } from "@tanstack/react-query";
 import { toast, Bounce } from "react-toastify";
 import { useFilters } from "components";
@@ -7,14 +7,15 @@ type DataT = {
     games: GameT[]
     games_count: number
 }
+type ErrorT = {
+    error: string
+}
 
 const GetGamesAPI = async (url: string): Promise<DataT> => {
     const req = await fetch(url);
     const res = await req.json();
-    if (req.status !== 200) {
-        throw new CustomError({
-            ...req,
-        })
+    if (!req.ok) {
+        throw res.error as ErrorT
     }
     return res as DataT
 }

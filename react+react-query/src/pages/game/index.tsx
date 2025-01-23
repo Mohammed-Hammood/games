@@ -26,7 +26,7 @@ function GamePage() {
             <div className={styles.loaderWrapper}>
                 {isLoading ?
                     <Loader size={80} /> :
-                    <h2>{error?.text}</h2>
+                    <h2>{error.error}</h2>
                 }
             </div>
         )

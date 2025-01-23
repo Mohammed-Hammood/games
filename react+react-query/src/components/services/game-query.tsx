@@ -6,13 +6,15 @@ import { useQuery } from "@tanstack/react-query";
 type DataT = {
     game: GameT | null | undefined
 }
+type ErrorT = {
+    error: string
+}
+
 const GetGameAPI = async (url: string) => {
     const req = await fetch(url);
     const res = await req.json();
-    if (req.status !== 200) {
-        throw new CustomError({
-            ...req,
-        })
+    if (!res.ok) {
+        throw res as ErrorT 
     }
     return res as DataT
 }
@@ -23,7 +25,7 @@ export function GameQuery() {
 
     const url = Endpoints.game(slug);
 
-    const { error, data: { game }, isLoading, isFetching } = useQuery<DataT>({
+    const { error, data: { game }, isLoading, isFetching } = useQuery<DataT, ErrorT>({
         queryKey: [url],
         queryFn: () => GetGameAPI(url),
         initialData: {
